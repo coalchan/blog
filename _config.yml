@@ -81,5 +81,5 @@ deploy:
   type: git
   message: new article
   user: coalchan
-  repo: 
-    github: git@github.com:coalchan/blog.git,gh-pages
+  repo: git@github.com:coalchan/blog.git
+  branch: gh-pages
