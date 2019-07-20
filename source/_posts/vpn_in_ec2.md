@@ -19,7 +19,7 @@ description:
 上述两条均通过，才能安装pptp。否则就只能考虑openvpn，或者请你的服务商来解决这个问题。
 
 ### 步骤	
-{% label 1 primary %} 安装pptpd
+{% label primary @1 %} 安装pptpd
 ``` shell
 sudo yum install pptpd
 ```
@@ -29,7 +29,7 @@ wget cache.ali.dagaiba.com/pptpd/pptpd-1.3.4-2.el6.x86_64.rpm
 rpm -ivh pptpd-1.3.4-2.el6.x86_64.rpm
 ```
 
-{% label 2 primary %} 配置pptpd
+{% label primary @2 %} 配置pptpd
 <!--more-->
     (1). 修改`/etc/pptpd.conf`文件, 在最先面添加以下2行
 ```
@@ -65,7 +65,7 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
-{% label 3 primary %} 重启pptpd服务
+{% label primary @3 %} 重启pptpd服务
 ```
 sudo /etc/init.d/pptpd restart
 ```
