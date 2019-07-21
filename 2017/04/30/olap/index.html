@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="历史其实OLAP的历史很早，只不过在今天的大数据时代，有了更加高级的工具，赋予了这个老的概念以更新的活力。据说最早的OLAP产品出现在1970年，叫做Express，但是“OLAP”这个名词直到1993年才被关系数据库之父Edgar F. Codd提出，在90年代的后期OLAP的市场经历了更好的发展，也出现了不少的产品。1998年微软推出了Microsoft Analysis Services，推">
+<meta name="keywords" content="OLAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据之OLAP系列一——介绍篇">
+<meta property="og:url" content="https://blog.luckypeng.com/2017/04/30/olap/index.html">
+<meta property="og:site_name" content="小鹏闲话">
+<meta property="og:description" content="历史其实OLAP的历史很早，只不过在今天的大数据时代，有了更加高级的工具，赋予了这个老的概念以更新的活力。据说最早的OLAP产品出现在1970年，叫做Express，但是“OLAP”这个名词直到1993年才被关系数据库之父Edgar F. Codd提出，在90年代的后期OLAP的市场经历了更好的发展，也出现了不少的产品。1998年微软推出了Microsoft Analysis Services，推">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T13:58:37.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大数据之OLAP系列一——介绍篇">
+<meta name="twitter:description" content="历史其实OLAP的历史很早，只不过在今天的大数据时代，有了更加高级的工具，赋予了这个老的概念以更新的活力。据说最早的OLAP产品出现在1970年，叫做Express，但是“OLAP”这个名词直到1993年才被关系数据库之父Edgar F. Codd提出，在90年代的后期OLAP的市场经历了更好的发展，也出现了不少的产品。1998年微软推出了Microsoft Analysis Services，推">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小鹏闲话" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.luckypeng.com/2017/04/30/olap/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>大数据之OLAP系列一——介绍篇 | 小鹏闲话</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小鹏闲话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">不自由，仍可活</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.luckypeng.com/2017/04/30/olap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小鹏闲话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">大数据之OLAP系列一——介绍篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-30 19:30:30" itemprop="dateCreated datePublished" datetime="2017-04-30T19:30:30+08:00">2017-04-30</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-20 21:58:37" itemprop="dateModified" datetime="2019-07-20T21:58:37+08:00">2019-07-20</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><p>其实OLAP的历史很早，只不过在今天的大数据时代，有了更加高级的工具，赋予了这个老的概念以更新的活力。据说最早的OLAP产品出现在1970年，叫做<em>Express</em>，但是“OLAP”这个名词直到1993年才被关系数据库之父Edgar F. Codd提出，在90年代的后期OLAP的市场经历了更好的发展，也出现了不少的产品。1998年微软推出了Microsoft Analysis Services，推动了广泛采用OLAP技术。<a id="more"></a></p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>之所以有OLAP的提出，在于当时的OLTP技术不能满足用户对于数据库查询分析的要求，用户的决策需要对关系数据库进行大量计算才能得到结果，而查询的结果并不能满足决策者提出的需求。因此，Codd提出了多维数据库和多维分析的概念，即OLAP。OLAP委员会对联机分析处理的定义为：从原始数据中转化出来的、能够真正为用户所理解的、并真实反映企业多维特性的数据称为信息数据，使分析人员、管理人员或执行人员能够从多种角度对信息数据进行快速、一致、交互地存取，从而获得对数据的更深入了解的一类软件技术。OLAP的目标是满足决策支持或多维环境特定的查询和报表需求，它的技术核心是“维”这个概念，因此OLAP也可以说是多维数据分析工具的集合。<br>简单从我的理解来说就是，OLAP帮助我们更好的从多个角度去理解现有的数据。</p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ol>
+<li>MOLAP<br>Multidimensional OLAP：多维联机分析处理</li>
+<li>ROLAP<br>Relational OLAP：关系型联机分析处理</li>
+<li>HOLAP<br>Hybrid OLAP：混合型OLAP</li>
+<li>WOLAP<br>Web-based OLAP</li>
+<li>DOLAP<br>Desktop OLAP</li>
+<li>ROLAP<br>Real-Time OLAP</li>
+</ol>
+<h2 id="MOLAP"><a href="#MOLAP" class="headerlink" title="MOLAP"></a>MOLAP</h2><p>这是一种传统的OLAP形式，它将数据存储在优化后的多维数组存储引擎中，形成数据立方体，即所谓的“cube”，基本原理就是将多维的数据<strong>预先填好</strong>。这种形式的最大优点是查询快，缺点是计算过程长，可能遇到维度爆炸。大部分商业的OLAP产品也是采用这种形式，如Cognos Powerplay, Oracle Database OLAP Option, MicroStrategy, Microsoft Analysis Services, Essbase, TM1, Jedox, 和icCube等等。</p>
+<h2 id="ROLAP"><a href="#ROLAP" class="headerlink" title="ROLAP"></a>ROLAP</h2><p>将分析用的多维数据存储在关系数据库中并根据应用的需要有选择的定义一批实视图作为表也存储在关系数据库中。与MOLAP的主要区别是，它不会把所有维度的数据结果计算好，而是需要查询时进行计算。优点和缺点几乎就是MOLAP的对立面，优点在于计算快，维护简单，缺点在于查询慢。</p>
+<h2 id="HOLAP"><a href="#HOLAP" class="headerlink" title="HOLAP"></a>HOLAP</h2><p>混合型的OLAP其实只是一种策略，它结合了上述了两种方式的优缺点，提供用户在不同适宜场景下的方案选择，以期望达到更快的查询且不错的稳定性。像Microsoft Analysis Services, Oracle Database OLAP Option, MicroStrategy and SAP AG BI Accelerator都用到HOLAP的技术策略。</p>
+<h2 id="WOLAP-DOLAP-ROLAP"><a href="#WOLAP-DOLAP-ROLAP" class="headerlink" title="WOLAP,DOLAP,ROLAP"></a>WOLAP,DOLAP,ROLAP</h2><p>资料太少，以后查到的话再补上。</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p>ROLAP实现较容易，但是对于存储的优化、索引、查询性能的提升有很高的要求，而MOLAP主要的挑战在于多维数组的存储，需要维护复杂的结构，而且要注意维度爆炸。而HOLAP就是一种随机应变的策略。</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h2><p>数据仓库的概念提出于20世纪80年代中期，20世纪90年代，数据仓库已从早期的探索阶段走向实用阶段。业界公认的数据仓库概念创始人W.H.Inmon在《BuildingtheDataWarehouse》一书中对数据仓库的定义是：“数据仓库是支持管理决策过程的、面向主题的、集成的、随时间变化的持久的数据集合”。构建数据仓库的过程就是根据预先设计好的逻辑模式从分布在企业内部各处的OLTP数据库中提取数据并对经过必要的变换最终形成全企业统一模式数据的过程。</p>
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><p>hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>数据仓库是存储数据的仓库，要构建这个仓库需要一些工具，Hive便是大数据下的一种选择，而OALP是这个仓库的具体应用，主要用来分析数据，支撑决策。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://en.wikipedia.org/wiki/Online_analytical_processing" target="_blank" rel="noopener">维基百科-Online analytical processing</a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/OLAP/" rel="tag"># OLAP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/10/marketing_yourself/" rel="next" title="从自我营销谈到IP以及个人尝试">
+                <i class="fa fa-chevron-left"></i> 从自我营销谈到IP以及个人尝试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/05/hive_introduce/" rel="prev" title="Hive简介">
+                Hive简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ1NS8yMTk2Nw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80" alt="小鹏">
+  
+  <p class="site-author-name" itemprop="name">小鹏</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">238</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">111</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/coalchan" title="GitHub &rarr; https://github.com/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/coalchan" title="知乎 &rarr; https://www.zhihu.com/people/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#历史"><span class="nav-number">1.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">3.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MOLAP"><span class="nav-number">3.1.</span> <span class="nav-text">MOLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROLAP"><span class="nav-number">3.2.</span> <span class="nav-text">ROLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HOLAP"><span class="nav-number">3.3.</span> <span class="nav-text">HOLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WOLAP-DOLAP-ROLAP"><span class="nav-number">3.4.</span> <span class="nav-text">WOLAP,DOLAP,ROLAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较"><span class="nav-number">3.5.</span> <span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关概念"><span class="nav-number">4.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库"><span class="nav-number">4.1.</span> <span class="nav-text">数据仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive"><span class="nav-number">4.2.</span> <span class="nav-text">Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小鹏</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1255649857&web_id=1255649857"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2017/04/30/olap/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

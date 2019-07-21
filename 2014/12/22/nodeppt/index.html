@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="来自https://github.com/ksky521/nodePPT">
+<meta name="keywords" content="分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodePPT">
+<meta property="og:url" content="https://blog.luckypeng.com/2014/12/22/nodeppt/index.html">
+<meta property="og:site_name" content="小鹏闲话">
+<meta property="og:description" content="来自https://github.com/ksky521/nodePPT">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T13:58:37.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodePPT">
+<meta name="twitter:description" content="来自https://github.com/ksky521/nodePPT">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小鹏闲话" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.luckypeng.com/2014/12/22/nodeppt/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>nodePPT | 小鹏闲话</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小鹏闲话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">不自由，仍可活</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.luckypeng.com/2014/12/22/nodeppt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小鹏闲话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodePPT
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-22 22:10:30" itemprop="dateCreated datePublished" datetime="2014-12-22T22:10:30+08:00">2014-12-22</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-20 21:58:37" itemprop="dateModified" datetime="2019-07-20T21:58:37+08:00">2019-07-20</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+            <div class="post-description">来自https://github.com/ksky521/nodePPT</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="为什么选择nodePPT"><a href="#为什么选择nodePPT" class="headerlink" title="为什么选择nodePPT"></a>为什么选择nodePPT</h2><p><strong>这可能是迄今为止最好的网页版PPT</strong><a id="more"></a></p>
+<ul>
+<li>基于GFM的markdown语法编写</li>
+<li>支持<a href="#mixed-code">html混排</a>，再复杂的demo也可以做！</li>
+<li><a href="#export-html">导出网页</a>或者<a href="#export-pdf">pdf</a>更容易分享</li>
+<li>支持<a href="#transition">20种转场动画</a>，可以设置单页动画</li>
+<li>支持单页背景图片</li>
+<li>多种模式：overview模式，<a href="#postmessage">双屏模式</a>，<a href="#socket">socket远程控制</a>，摇一摇换页，使用ipad/iphone控制翻页更酷哦~</li>
+<li>可以使用画板，<strong>双屏同步画板</strong>内容！可以使用note做备注</li>
+<li>支持语法高亮，自由选择<a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight样式</a></li>
+<li>可以单页ppt内部动画，单步动画</li>
+<li><a href="#callback">支持进入/退出回调</a>，做在线demo很方便</li>
+<li>支持事件update函数，查看<a href="http://qdemo.sinaapp.com/#12" target="_blank" rel="noopener">demo</a></li>
+</ul>
+<h2 id="0-9-0新功能"><a href="#0-9-0新功能" class="headerlink" title="0.9.0新功能"></a>0.9.0新功能</h2><ul>
+<li>添加画板多端同步</li>
+<li>添加按钮控制进度</li>
+<li>新增两种转场动效，增加事件绑定方法：<code>Slide.on</code></li>
+<li>修复一些bug</li>
+</ul>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><ul>
+<li><a href="http://qdemo.sinaapp.com/" target="_blank" rel="noopener">http://qdemo.sinaapp.com/</a></li>
+<li>双屏控制：<a href="http://qdemo.sinaapp.com/?_multiscreen=1" target="_blank" rel="noopener">http://qdemo.sinaapp.com/?_multiscreen=1</a> 记得允许弹窗哦~</li>
+<li>手机百度前端之路：<a href="http://qdemo.sinaapp.com/box-fe-road.htm" target="_blank" rel="noopener">http://qdemo.sinaapp.com/box-fe-road.htm</a></li>
+</ul>
+<h2 id="theme-自定义"><a href="#theme-自定义" class="headerlink" title="theme 自定义"></a>theme 自定义</h2><p>感觉默认的模板不符合新意？可以支持自定义模板，查看<a href="https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss" target="_blank" rel="noopener">theme.moon</a></p>
+<p>自定义后的模板路径在markdown的设置里填写：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 这是演讲的题目</span><br><span class="line">speaker: 演讲者名字</span><br><span class="line">url: 可以设置链接</span><br><span class="line">transition: 转场效果，例如：zoomin/cards/slide</span><br><span class="line">files: /css/theme.moon.css</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodeppt</span><br></pre></td></tr></table></figure>
+
+<h2 id="shell使用"><a href="#shell使用" class="headerlink" title="shell使用"></a>shell使用</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取帮助</span></span><br><span class="line">nodeppt start -h</span><br><span class="line"><span class="comment"># 绑定端口</span></span><br><span class="line">nodeppt start -p &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nodeppt start -p 8090 -d path/<span class="keyword">for</span>/ppts</span><br><span class="line"><span class="comment"># 绑定host，默认绑定0.0.0.0</span></span><br><span class="line">nodeppt start -p 8080 -d path/<span class="keyword">for</span>/ppts -h 127.0.0.1</span><br><span class="line"><span class="comment"># 使用socket通信（按Q键显示/关闭二维码，手机扫描，即可控制）</span></span><br><span class="line"><span class="comment"># socket须知：1、注意手机和pc要可以相互访问，2、防火墙，3、ip</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启用socket控制"><a href="#启用socket控制" class="headerlink" title="启用socket控制"></a>启用socket控制</h4><h5 id="方法一：使用start命令行"><a href="#方法一：使用start命令行" class="headerlink" title="方法一：使用start命令行"></a>方法一：使用<code>start</code>命令行</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt start -c socket</span><br></pre></td></tr></table></figure>
+
+<p>在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页</p>
+<h5 id="方法二：使用url参数"><a href="#方法二：使用url参数" class="headerlink" title="方法二：使用url参数"></a>方法二：使用url参数</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8080/md/demo.md?controller=socket</span><br></pre></td></tr></table></figure>
+
+<p>在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页</p>
+<h4 id="启用postMessage控制"><a href="#启用postMessage控制" class="headerlink" title="启用postMessage控制"></a>启用postMessage控制</h4><p>默认使用postMessage多窗口控制，打开方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8080/md/demo.md?_multiscreen=1</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><p>使用函数<code>Slide.on</code>，目前支持update函数，即转场后的回调。示例代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Slide.on(<span class="string">'update'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">i, itemIndex, cls</span>) </span>&#123;</span><br><span class="line"><span class="comment">//接受三个参数：</span></span><br><span class="line"><span class="comment">//* 当前slide的index</span></span><br><span class="line"><span class="comment">//* itemIndex当前slide进入的第几个build动画，从1开始</span></span><br><span class="line"><span class="comment">//* 方向pageup/pagedown</span></span><br><span class="line">    Puff.add(<span class="string">'#FFC524'</span> <span class="comment">/*colors[i % 6]*/</span> , ctx, <span class="number">20</span>, <span class="number">700</span>, width / <span class="number">2</span>, height / <span class="number">2</span>, width / <span class="number">1.8</span>, <span class="number">400</span>);</span><br><span class="line">    clearInterval(timer);</span><br><span class="line">    <span class="comment">//第十三个有动效</span></span><br><span class="line">    <span class="keyword">if</span> (i === <span class="number">13</span> || i === <span class="number">14</span>) &#123;</span><br><span class="line">        timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            Puff.draw(<span class="number">1</span>);</span><br><span class="line">        &#125;, <span class="number">1E3</span> / FPS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>demo中<a href="http://qdemo.sinaapp.com/#13" target="_blank" rel="noopener">第13张</a>使用回调做了魔幻翻页效果</p>
+<h3 id="导出ppt"><a href="#导出ppt" class="headerlink" title="导出ppt"></a>导出ppt</h3><p>这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？</p>
+<p>导出ppt有三种，一种最简单直接<strong>ctrl+P</strong>，一种是<strong>pdf版</strong>，一种是<strong>html版</strong></p>
+<p><a name="export-pdf"></a></p>
+<h4 id="pdf版"><a href="#pdf版" class="headerlink" title="pdf版"></a>pdf版</h4><p>需要安装<a href="http://phantomjs.org/" target="_blank" rel="noopener">phantomJS</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装phantomjs，如果安装了，请忽略</span></span><br><span class="line">npm install -g phantomjs</span><br><span class="line"><span class="comment"># 启动nodeppt server</span></span><br><span class="line">nodeppt start</span><br><span class="line"><span class="comment"># 导出文件</span></span><br><span class="line">nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf</span><br></pre></td></tr></table></figure>
+
+<p><a name="export-html"></a></p>
+<h4 id="html版"><a href="#html版" class="headerlink" title="html版"></a>html版</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取generate帮助</span></span><br><span class="line">nodeppt generate -h</span><br><span class="line"><span class="comment"># 使用generate命令</span></span><br><span class="line">nodeppt generate filepath</span><br><span class="line"><span class="comment"># 导出全部，包括nodeppt的js、img和css文件夹</span></span><br><span class="line"><span class="comment"># 默认导出在publish文件夹</span></span><br><span class="line">nodeppt generate ./ppts/demo.md -a</span><br><span class="line"><span class="comment"># 指定导出文件夹</span></span><br><span class="line">nodeppt generate ./ppts/demo.md -a -o output/path</span><br></pre></td></tr></table></figure>
+
+<p>导出目录下所有ppt，并且生成ppt list首页：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt path -o output/path -a</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### markdown语法</span><br><span class="line">nodeppt是支持**marked**语法的，但是为了制作出来更加完美的ppt，扩展了下面的语法</span><br><span class="line"></span><br><span class="line">#### 配置</span><br><span class="line">基本配置如下：</span><br><span class="line">```markdown</span><br><span class="line">title: 这是演讲的题目</span><br><span class="line">speaker: 演讲者名字</span><br><span class="line">url: 可以设置链接</span><br><span class="line">transition: 转场效果，例如：zoomin/cards/slide</span><br><span class="line">files: 引入js和css的地址，如果有的话~自动放在页面底部</span><br></pre></td></tr></table></figure>
+
+<p><strong>目录关系</strong>：可以在md同级目录下创建img、js、css等文件夹，然后在markdown里面引用，nodeppt默认会先查找md文件同级目录下面的静态资源，没有再找默认的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;a name=&quot;transition&quot;&gt;&lt;/a&gt;</span><br><span class="line">支持的转场动画包括：</span><br><span class="line"></span><br><span class="line"> * kontext</span><br><span class="line"> * vkontext</span><br><span class="line"> * circle</span><br><span class="line"> * cover-circle</span><br><span class="line"> * cover-diamond</span><br><span class="line"> * earthquake</span><br><span class="line"> * cards</span><br><span class="line"> * glue</span><br><span class="line"> * stick</span><br><span class="line"> * move</span><br><span class="line"> * newspaper</span><br><span class="line"> * slide</span><br><span class="line"> * slide2</span><br><span class="line"> * slide3</span><br><span class="line"> * horizontal3d</span><br><span class="line"> * horizontal</span><br><span class="line"> * vertical3d</span><br><span class="line"> * zoomin</span><br><span class="line"> * zoomout</span><br><span class="line"> * pulse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">如果设置单页动画，请参考下面的**[单页动画设置](#transition-page)**部分~</span><br><span class="line"></span><br><span class="line">#### 分页</span><br><span class="line">通过```[slide]```作为每页ppt的间隔，如果需要添加单页背景，使用下面的语法：</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">[slide style=&quot;background-image:url(&apos;/img/bg1.png&apos;)&quot;]</span><br><span class="line"># 这是个有背景的家伙</span><br><span class="line">## 我是副标题</span><br></pre></td></tr></table></figure></p>
+<h4 id="单页ppt上下布局"><a href="#单页ppt上下布局" class="headerlink" title="单页ppt上下布局"></a>单页ppt上下布局</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[slide]</span><br><span class="line"><span class="section">## 主页面样式</span></span><br><span class="line"><span class="section">### ----是上下分界线</span></span><br><span class="line">----</span><br><span class="line">nodeppt是基于nodejs写的支持 <span class="strong">**Markdown!**</span> 语法的网页PPT</span><br><span class="line"></span><br><span class="line">nodeppt：https://github.com/ksky521/nodePPT</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h4><p>语法跟<strong>Github Flavored Markdown</strong> 一样~</p>
+<p><a name="transition-page"></a></p>
+<h4 id="单页动画设置"><a href="#单页动画设置" class="headerlink" title="单页动画设置"></a>单页动画设置</h4><p>在md文件，顶部 <figure class="highlight plain"><figcaption><span>可以设置全局转场动画，如果要设置单页的转场动画，可以通过下面的语法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">[slide data-transition=&quot;vertical3d&quot;]</span><br><span class="line">## 这是一个vertical3d的动画</span><br></pre></td></tr></table></figure></p>
+<p><a name="mixed-code"></a></p>
+<h4 id="插入html代码"><a href="#插入html代码" class="headerlink" title="插入html代码"></a>插入html代码</h4><p>如果需要完全diy自己的ppt内容，可以<strong>直接使用</strong> html标签，支持markdown和html混编。例如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"file-setting"</span>&gt;</span></span></span><br><span class="line"><span class="code">    &lt;p&gt;这是html&lt;/p&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"css-demo"</span>&gt;</span></span>这是css样式<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span>具体看下项目中 ppts/demo.md 代码<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="code">    function testScriptTag()&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    console.log(typeof testScriptTag);</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="section">#css-demo&#123;</span></span><br><span class="line"><span class="code">    color: red;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><a name="callback"></a></p>
+<h4 id="转场回调"><a href="#转场回调" class="headerlink" title="转场回调"></a>转场回调</h4><p>前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法外，还提供了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">[slide data-outcallback=&quot;outcallback&quot; data-incallback=&quot;incallback&quot;]</span><br><span class="line">## 当进入此页，就执行incallback函数</span><br><span class="line">## 当离开此页面，就执行outcallback函数</span><br></pre></td></tr></table></figure></p>
+<h4 id="表格实例"><a href="#表格实例" class="headerlink" title="表格实例"></a>表格实例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">### 市面上主要的css预处理器：less\sass\stylus</span><br><span class="line">---</span><br><span class="line"> |less| sass | stylus</span><br><span class="line">:-------|:------:|-------:|--------</span><br><span class="line">环境 |js/nodejs | Ruby | nodejs</span><br><span class="line">扩展名 | .less | .sass/.scss | .styl</span><br><span class="line">特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众</span><br><span class="line">案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |</span><br></pre></td></tr></table></figure>
+
+<h4 id="插入iframe"><a href="#插入iframe" class="headerlink" title="插入iframe"></a>插入iframe</h4><p>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```markdown</span><br><span class="line">&lt;iframe data-src=&quot;http://www.baidu.com&quot; src=&quot;about:blank;&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>类似下面的语法：(更多用法查看ppts/demo.md文件)</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">title: nodeppt markdown 演示</span><br><span class="line">speaker: Theo Wang</span><br><span class="line">url: https://github.com/ksky521/nodePPT</span><br><span class="line">transition: zoomin</span><br><span class="line"></span><br><span class="line">[slide]</span><br><span class="line"></span><br><span class="line"><span class="section"># 封面样式</span></span><br><span class="line"><span class="section">## h1是作为封面用的，内部的都用h2</span></span><br><span class="line"></span><br><span class="line">[slide style="background-image:url('/img/bg1.png')"]</span><br><span class="line"></span><br><span class="line"><span class="section"># 背景图片 &#123;:&amp;.flexbox.vleft&#125;</span></span><br><span class="line"><span class="section">## 使用方法：&amp;#91;slide style="background-image:url('/img/bg1.png')"&amp;#93;</span></span><br><span class="line"></span><br><span class="line">[slide]</span><br><span class="line"></span><br><span class="line"><span class="section">## 主页面样式</span></span><br><span class="line"><span class="section">### ----是上下分界线</span></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">nodeppt是基于nodejs写的支持 <span class="strong">**Markdown!**</span> 语法的网页PPT</span><br><span class="line"></span><br><span class="line">nodeppt：https://github.com/ksky521/nodePPT</span><br><span class="line"></span><br><span class="line">[slide]</span><br><span class="line"></span><br><span class="line">什么？这些功能还不够用？</span><br><span class="line"></span><br><span class="line">极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能</span><br><span class="line"></span><br><span class="line">查看项目目录ppts获取更多帮助信息</span><br></pre></td></tr></table></figure>
+
+<p>更多demo，查看 <figure class="highlight plain"><figcaption><span>目录的demo</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 查看帮助</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">nodeppt -h</span><br><span class="line"># 任何命令都可以输入-h查看帮助</span><br><span class="line">nodeppt start -h</span><br></pre></td></tr></table></figure></p>
+<h2 id="demo演示-amp-使用方法"><a href="#demo演示-amp-使用方法" class="headerlink" title="demo演示 &amp; 使用方法"></a>demo演示 &amp; 使用方法</h2><ul>
+<li>执行 <code>nodeppt start</code></li>
+<li>访问 <a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a></li>
+<li>在线demo： <a href="http://qdemo.sinaapp.com/" target="_blank" rel="noopener">http://qdemo.sinaapp.com/</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/分享/" rel="tag"># 分享</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/21/I-Am-Legend-is-over/" rel="next" title="终于看完了《I Am Legend》">
+                <i class="fa fa-chevron-left"></i> 终于看完了《I Am Legend》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/24/the-little-prince/" rel="prev" title="The Little Prince">
+                The Little Prince <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ1NS8yMTk2Nw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80" alt="小鹏">
+  
+  <p class="site-author-name" itemprop="name">小鹏</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">238</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">111</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/coalchan" title="GitHub &rarr; https://github.com/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/coalchan" title="知乎 &rarr; https://www.zhihu.com/people/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么选择nodePPT"><span class="nav-number">1.</span> <span class="nav-text">为什么选择nodePPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-9-0新功能"><span class="nav-number">2.</span> <span class="nav-text">0.9.0新功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo"><span class="nav-number">3.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theme-自定义"><span class="nav-number">4.</span> <span class="nav-text">theme 自定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">5.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell使用"><span class="nav-number">6.</span> <span class="nav-text">shell使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">6.1.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启用socket控制"><span class="nav-number">6.1.1.</span> <span class="nav-text">启用socket控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法一：使用start命令行"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">方法一：使用start命令行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法二：使用url参数"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">方法二：使用url参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启用postMessage控制"><span class="nav-number">6.1.2.</span> <span class="nav-text">启用postMessage控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件绑定"><span class="nav-number">6.2.</span> <span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出ppt"><span class="nav-number">6.3.</span> <span class="nav-text">导出ppt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pdf版"><span class="nav-number">6.3.1.</span> <span class="nav-text">pdf版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html版"><span class="nav-number">6.3.2.</span> <span class="nav-text">html版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单页ppt上下布局"><span class="nav-number">6.3.3.</span> <span class="nav-text">单页ppt上下布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码格式化"><span class="nav-number">6.3.4.</span> <span class="nav-text">代码格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单页动画设置"><span class="nav-number">6.3.5.</span> <span class="nav-text">单页动画设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入html代码"><span class="nav-number">6.3.6.</span> <span class="nav-text">插入html代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转场回调"><span class="nav-number">6.3.7.</span> <span class="nav-text">转场回调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格实例"><span class="nav-number">6.3.8.</span> <span class="nav-text">表格实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入iframe"><span class="nav-number">6.3.9.</span> <span class="nav-text">插入iframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">6.3.10.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo演示-amp-使用方法"><span class="nav-number">7.</span> <span class="nav-text">demo演示 &amp; 使用方法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小鹏</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1255649857&web_id=1255649857"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2014/12/22/nodeppt/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

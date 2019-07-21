@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="原文：docs.scala-lang.org/tour/variances.html">
+<meta name="keywords" content="scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala之旅——型变">
+<meta property="og:url" content="https://blog.luckypeng.com/2018/09/07/variances/index.html">
+<meta property="og:site_name" content="小鹏闲话">
+<meta property="og:description" content="原文：docs.scala-lang.org/tour/variances.html">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T13:58:37.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala之旅——型变">
+<meta name="twitter:description" content="原文：docs.scala-lang.org/tour/variances.html">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小鹏闲话" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.luckypeng.com/2018/09/07/variances/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>Scala之旅——型变 | 小鹏闲话</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小鹏闲话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">不自由，仍可活</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.luckypeng.com/2018/09/07/variances/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小鹏闲话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Scala之旅——型变
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-07 10:11:53" itemprop="dateCreated datePublished" datetime="2018-09-07T10:11:53+08:00">2018-09-07</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-20 21:58:37" itemprop="dateModified" datetime="2019-07-20T21:58:37+08:00">2019-07-20</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+            <div class="post-description">原文：docs.scala-lang.org/tour/variances.html</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>型变是复杂类型的子类型关系与它们组件的类型的子类型关系之间的关联性。Scala支持 <a href="generic-classes.html">泛型类</a>的类型参数上的型变注解，可以使得它们是协变的、逆变的或者不变的（如果没有使用注解的话）。型变在类型系统中的使用使得我们在复杂的类型之间建立起了直观的联系，反之如果没有型变则限制了抽象类的重用。<a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Foo[+A] // 协变类</span><br><span class="line">class Bar[-A] // 逆变类</span><br><span class="line">class Baz[A]  // 不变类</span><br></pre></td></tr></table></figure>
+
+<h3 id="协变"><a href="#协变" class="headerlink" title="协变"></a>协变</h3><p>泛型类的类型参数<code>A</code>可以通过使用注解<code>+A</code>变成协变的。对于某个<code>class List[+A]</code>，让<code>A</code>协变意味着对于类型<code>A</code>和<code>B</code>，如果<code>A</code>是<code>B</code>的子类型，那么<code>List[A]</code>则是<code>List[B]</code>的子类型。这让我们可以使用泛型类来创建非常有用且直观的子类型关系。</p>
+<p>现在来看下面这个简单的类结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">abstract class Animal &#123;</span><br><span class="line">  def name: String</span><br><span class="line">&#125;</span><br><span class="line">case class Cat(name: String) extends Animal</span><br><span class="line">case class Dog(name: String) extends Animal</span><br></pre></td></tr></table></figure>
+
+<p><code>Cat</code>和<code>Dog</code>都是<code>Animal</code>的子类型。Scala的标准库中有一个常用的不可变类<code>sealed abstract class List[+A]</code> ，它的类型参数<code>A</code>就是协变的。这意味着<code>List[Cat]</code>是一个<code>List[Animal]</code>而 <code>List[Dog]</code>也是一个<code>List[Animal]</code>。从直观上，一个猫的列表和一个狗的列表都是一个动物列表是讲得通的。因而你可以把它们其中任意一个替换为<code>List[Animal]</code>来使用。</p>
+<p>下面的例子当中，方法<code>printAnimalNames</code>会接受一个动物列表作为参数，并且依次在新的一行里打印它们的名字。如果<code>List[A]</code>不是协变的，则下面两个方法的调用不会通过编译，这将严重限制了<code>printAnimalNames</code>方法的使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">object CovarianceTest extends App &#123;</span><br><span class="line">  def printAnimalNames(animals: List[Animal]): Unit = &#123;</span><br><span class="line">    animals.foreach &#123; animal =&gt;</span><br><span class="line">      println(animal.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  val cats: List[Cat] = List(Cat(&quot;Whiskers&quot;), Cat(&quot;Tom&quot;))</span><br><span class="line">  val dogs: List[Dog] = List(Dog(&quot;Fido&quot;), Dog(&quot;Rex&quot;))</span><br><span class="line"></span><br><span class="line">  printAnimalNames(cats)</span><br><span class="line">  // Whiskers</span><br><span class="line">  // Tom</span><br><span class="line"></span><br><span class="line">  printAnimalNames(dogs)</span><br><span class="line">  // Fido</span><br><span class="line">  // Rex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a>逆变</h3><p>泛型类的类型参数<code>A</code>可以通过使用注解<code>-A</code>变成逆变的。这使得我们在类和相似的类型参数之间建立起了子类型关系，而结果正好与协变相反。也就是说，对于某个类<code>class Writer[-A]</code>，让<code>A</code>逆变意味着对于类型<code>A</code>和<code>B</code>，如果<code>A</code>是<code>B</code>的子类型，那么<code>Writer[B]</code>则是<code>Writer[A]</code>的子类型。</p>
+<p>想想上面定义的类<code>Cat</code>、<code>Dog</code>和<code>Animal</code>，在下面例子中的应用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abstract class Printer[-A] &#123;</span><br><span class="line">  def print(value: A): Unit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个<code>Printer[A]</code>是一个简单的类，它知道该如何打印出类型<code>A</code>。下面我们为具体的类型来定义一些子类吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class AnimalPrinter extends Printer[Animal] &#123;</span><br><span class="line">  def print(animal: Animal): Unit =</span><br><span class="line">    println(&quot;The animal&apos;s name is: &quot; + animal.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CatPrinter extends Printer[Cat] &#123;</span><br><span class="line">  def print(cat: Cat): Unit =</span><br><span class="line">    println(&quot;The cat&apos;s name is: &quot; + cat.name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果一个<code>Printer[Cat]</code>知道如何打印<code>Cat</code>到控制台，而一个<code>Printer[Animal]</code>知道如何打印<code>Animal</code>到控制台，那么一个<code>Printer[Animal]</code>从道理上讲也应该知道如何打印<code>Cat</code>。反过来则不适用，因为一个<code>Printer[Cat]</code>不知道如何打印一个<code>Animal</code>到控制台。因此我们应该能够用<code>Printer[Animal]</code>来替换<code>Printer[Cat]</code>，要做到这点的话，需要让<code>Printer[A]</code>成为逆变的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">object ContravarianceTest extends App &#123;</span><br><span class="line">  val myCat: Cat = Cat(&quot;Boots&quot;)</span><br><span class="line"></span><br><span class="line">  def printMyCat(printer: Printer[Cat]): Unit = &#123;</span><br><span class="line">    printer.print(myCat)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  val catPrinter: Printer[Cat] = new CatPrinter</span><br><span class="line">  val animalPrinter: Printer[Animal] = new AnimalPrinter</span><br><span class="line"></span><br><span class="line">  printMyCat(catPrinter)</span><br><span class="line">  printMyCat(animalPrinter)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该程序的输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The cat&apos;s name is: Boots</span><br><span class="line">The animal&apos;s name is: Boots</span><br></pre></td></tr></table></figure>
+
+<h3 id="不变"><a href="#不变" class="headerlink" title="不变"></a>不变</h3><p>Scala中的泛型类默认是不变的。这意味着它们既不是协变的，也不是逆变的。下面的例子中，<code>Container</code>类是不变的，则<code>Container[Cat]</code>不是<code>Container[Animal]</code>，反过来也不是。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Container[A](value: A) &#123;</span><br><span class="line">  private var _value: A = value</span><br><span class="line">  def getValue: A = _value</span><br><span class="line">  def setValue(value: A): Unit = &#123;</span><br><span class="line">    _value = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看起来似乎一个<code>Container[Cat]</code>应该也是一个<code>Container[Animal]</code>，但是允许一个可变的泛型类协变其实是不安全的。这个例子中，<code>Container</code>是不变的，这点很重要。如果<code>Container</code>是协变的，类似于下面的事情可能就会发生：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val catContainer: Container[Cat] = new Container(Cat(&quot;Felix&quot;))</span><br><span class="line">val animalContainer: Container[Animal] = catContainer</span><br><span class="line">animalContainer.setValue(Dog(&quot;Spot&quot;))</span><br><span class="line">val cat: Cat = catContainer.getValue // Oops, we&apos;d end up with a Dog assigned to a Cat</span><br></pre></td></tr></table></figure>
+
+<p>幸运的是，在我们犯错前编译器就会阻止我们。</p>
+<h3 id="其他示例"><a href="#其他示例" class="headerlink" title="其他示例"></a>其他示例</h3><p>另外有一个可以帮助我们理解型变的例子，是源于Scala标准库里的<code>trait Function1[-T, +R]</code>。<code>Function1</code>是带有一个参数的函数，第一个类型参数<code>T</code>表示参数类型，第二个类型参数<code>R</code>表示返回类型。<code>Function1</code>在它的参数类型上是逆变的，在返回类型上是协变的。一般我们会使用字面量<code>A =&gt; B</code>来表示<code>Function1[A, B]</code>。</p>
+<p>假如我们已经有了和之前类似的<code>Cat</code>、<code>Dog</code>、<code>Animal</code>继承树，外加下面这些：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract class SmallAnimal extends Animal</span><br><span class="line">case class Mouse(name: String) extends SmallAnimal</span><br></pre></td></tr></table></figure>
+
+<p>假设现在我们有个函数接受动物类型，返回它们吃的食物类型。我们想要的可能是<code>Cat =&gt; SmallAnimal</code>（因为猫会吃小动物），但是如果替换为<code>Animal =&gt; Mouse</code>，我们的程序也可以正常运行。直观上说<code>Animal =&gt; Mouse</code>也可以接受一个<code>Cat</code>作为参数，因为<code>Cat</code>是一个<code>Animal</code>，并且返回一个<code>Mouse</code>，而它也是一个<code>SmallAnimal</code>。我们可以安全且隐形地用后者进行替换，因而我们可以说<code>Animal =&gt; Mouse</code>是<code>Cat =&gt; SmallAnimal</code>的子类型。</p>
+<h3 id="和其他语言比较"><a href="#和其他语言比较" class="headerlink" title="和其他语言比较"></a>和其他语言比较</h3><p>和Scala类似的一些语言对于支持型变的方式是不一样的。例如，Scala中的型变注解其实和C#非常类似，它们都是在抽象类的定义时添加了注解（称为“声明式型变”）。而在Java中，型变注解是在一个抽象类使用时由使用者给定的（称为“使用式型变”）。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/scala/" rel="tag"># scala</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/06/lower-type-bounds/" rel="next" title="Scala之旅——类型下界">
+                <i class="fa fa-chevron-left"></i> Scala之旅——类型下界
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/08/inner-classes/" rel="prev" title="Scala之旅——内部类">
+                Scala之旅——内部类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ1NS8yMTk2Nw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80" alt="小鹏">
+  
+  <p class="site-author-name" itemprop="name">小鹏</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">238</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">111</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/coalchan" title="GitHub &rarr; https://github.com/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/coalchan" title="知乎 &rarr; https://www.zhihu.com/people/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#协变"><span class="nav-number">1.</span> <span class="nav-text">协变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆变"><span class="nav-number">2.</span> <span class="nav-text">逆变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不变"><span class="nav-number">3.</span> <span class="nav-text">不变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他示例"><span class="nav-number">4.</span> <span class="nav-text">其他示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和其他语言比较"><span class="nav-number">5.</span> <span class="nav-text">和其他语言比较</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小鹏</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1255649857&web_id=1255649857"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2018/09/07/variances/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

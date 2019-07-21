@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小鹏闲话</title>
+  
+  <subtitle>不自由，仍可活</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.luckypeng.com/"/>
+  <updated>2019-07-20T13:58:37.158Z</updated>
+  <id>https://blog.luckypeng.com/</id>
+  
+  <author>
+    <name>小鹏</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flink流计算——前言和目录</title>
+    <link href="https://blog.luckypeng.com/2018/11/27/stream-processing-with-apache-flink-0/"/>
+    <id>https://blog.luckypeng.com/2018/11/27/stream-processing-with-apache-flink-0/</id>
+    <published>2018-11-27T13:08:39.000Z</published>
+    <updated>2019-07-20T13:58:37.158Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="本书概要"><a href="#本书概要" class="headerlink" title="本书概要"></a>本书概要</h2><p>对于提前发布的电子书来说，你得到的是最原始的内容，甚至没有经过作者的编辑，因此你可以早在官方正式发布之前就利用其中的技术。此外，在本书有重大修改、新章节更新以及最终的电子书发布的时候，都会收到更新提示。</p><p>开始学习Apache Flink吧，这套开源框架让你驾驭流式数据处理，诸如用户的交互行为、传感器数据和机器日志等。通过这套实用指南，你将学会使用Apache Flink的流处理API来实现、持续运行和维护实际的程序。</p><p>作者之一Fabian Hueske是Flink的创建者，另外一位作者Vasia Kalavri是Flink图处理API (Gelly)的核心贡献者。他们解释了并行处理的基本概念，告诉你流式分析与传统批处理数据分析的区别。通过此书，软件工程师、数据工程师以及系统管理员将会学到Flink的DataStream API的基础知识，包括它的架构和一个基本的Flink流处理程序的组件。<a id="more"></a></p><ul><li>使用Apache Flink的DataStream API来解决现实世界的问题</li><li>为开发一个Flink的流处理程序创建一个环境</li><li>设计流式程序并且将周期的批处理工作迁移到持续的流处理工作上</li><li>学习处理一组记录的窗口操作</li><li>将数据流提取到一个DataStream程序，并将结果流发到不同的存储系统中</li><li>实现流处理应用中创建有状态以及自定义运算</li><li>操作、维护和更新持续运行的Flink流处理程序</li><li>研究几个部署选项，包括高可用安装的配置</li></ul><h2 id="出版社资源"><a href="#出版社资源" class="headerlink" title="出版社资源"></a>出版社资源</h2><p>勘误页：<a href="http://oreilly.com/catalog/0636920057321/errata" target="_blank" rel="noopener">http://oreilly.com/catalog/0636920057321/errata</a></p><h2 id="关于出版社"><a href="#关于出版社" class="headerlink" title="关于出版社"></a>关于出版社</h2><p>O Reilly Media通过在线和面对面的培训、书籍、视频、研究和会议传播创新者的知识。自1978年以来，O Reilly一直是前沿技术发展的记录者和催化剂，瞄准了……</p><p><a href="https://www.safaribooksonline.com/library/publisher/oreilly-media-inc/" target="_blank" rel="noopener">更多关于O’Reilly Media, Inc.</a></p><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol><li>有状态的流处理介绍<ul><li>传统的数据结构</li><li>有状态的流处理<ul><li>事件驱动的应用</li><li>数据管道与实时ETL</li><li>流式分析</li></ul></li><li>开源流处理的演进</li><li>Flink尝鲜</li><li>你将在这本书中学到什么</li></ul></li><li>流处理的基本原理<ul><li>Dataflow编程模型介绍<ul><li>Dataflow图</li><li>数据并行与任务并行</li><li>数据交换策略</li></ul></li><li>并行处理无限流<ul><li>延迟与吞吐量</li><li>数据量的操作</li></ul></li><li>时间语义<ul><li>一分钟是什么意思</li><li>处理时间</li><li>事件时间</li><li>水印</li><li>处理时间 VS 事件时间</li></ul></li><li>状态与一致性模型<ul><li>任务失败</li><li>结果保证</li></ul></li><li>小结</li></ul></li><li>Apache Flink的架构<ul><li>系统架构<ul><li>Flink组件配置</li><li>应用部署</li><li>任务执行</li><li>高可用配置</li></ul></li><li>Flink中的数据传输<ul><li>高吞吐和低延迟</li><li>背压流量控制</li></ul></li><li>事件时间的处理<ul><li>时间戳</li><li>水印</li><li>水印与事件时间</li><li>时间戳分配和水印生成</li></ul></li><li>状态管理<ul><li>操作符状态</li><li>带键的（keyed）状态 </li><li>后端状态</li><li>扩展状态操作符</li></ul></li><li>检查点、保存点以及状态恢复<ul><li>一致性检查点</li><li>从一致性检查点恢复</li><li>Flink的轻量级检查点算法</li><li>保存点</li></ul></li><li>小结</li></ul></li><li>搭建Apache Flink的开发环境<ul><li>软件要求</li><li>在IDE中运行和调试Flink程序<ul><li>在你的IDE中导入书中的案例</li><li>在IDE中运行Flink程序</li><li>在IDE中调试Flink程序</li></ul></li><li>Flink的maven项目开发向导</li></ul></li><li>DataStream的API（v1.4.0）<ul><li>你好，Flink！<ul><li>设置运行时环境</li><li>读取输入流</li><li>应用转换</li><li>输出结果</li><li>执行</li></ul></li><li>类型<ul><li>支持的数据类型</li><li>类型提示</li><li>TypeInformation介绍</li></ul></li><li>转换<ul><li>基本的转换</li><li>带键流的转换</li><li>多流转换</li><li>分区转换</li></ul></li><li>并行设置</li><li>引用字段（field）和定义键（key）</li><li>定义UDF</li><li>添加Flink以及外部的依赖</li><li>小结</li></ul></li><li>基于时间和窗口的操作符<ul><li>时间特征配置<ul><li>程序中事件时间的时间戳和水印</li><li>水印、延迟和完整性</li></ul></li><li>处理函数<ul><li>计时服务和计时器</li><li>Emitting to Side Outputs</li><li>CoProcessFunction介绍</li></ul></li><li>窗口操作符<ul><li>定义窗口操作符</li><li>内置的Window Assigners</li><li>在窗口上应用函数</li><li>自定义窗口操作符</li></ul></li><li>实时的流Join</li><li>处理迟到的数据<ul><li>丢弃迟到的事件</li><li>重定向迟到的事件</li><li>使用迟到的事件来更新结果</li></ul></li><li>小结</li></ul></li><li>状态操作符和用户函数<ul><li>实现有状态的函数<ul><li>在RuntimeContext中声明带键状态</li><li>使用ListCheckpointed接口实现操作符列表状态（Operator List State）</li><li>使用连接的广播状态（Connected Broadcast State）</li><li>使用CheckpointedFunction接口</li><li>接收已完成的检查点的通知</li></ul></li><li>有状态程序的鲁棒性和性能<ul><li>选择一个状态后端（State Backend）</li><li>启用检查点</li><li>更新状态操作符</li><li>优化有状态程序的性能</li><li>防止状态泄露</li></ul></li><li>可查询的状态<ul><li>架构和启用可查询的状态</li><li>暴露可查询的状态</li><li>从外部程序中查询状态</li></ul></li><li>小结</li></ul></li><li>外部系统的读写<ul><li>应用一致性保证</li><li>提供的连接器<ul><li>Apache Kafka的source连接器</li><li>Apache Kafka的sink连接器</li><li>文件系统的source连接器</li><li>文件系统的sink连接器</li><li>Apache Cassandra的sink连接器</li></ul></li><li>实现一个自定义source函数<ul><li>可重置的source函数</li><li>source函数、时间戳和水印</li></ul></li><li>实现一个自定义sink函数<ul><li>幂等的sink连接器</li><li>事务性的sink连接器</li></ul></li><li>异步访问外部系统</li><li>小结</li></ul></li><li>为流处理程序搭建Flink<ul><li>部署模式<ul><li>独立集群</li><li>Docker</li><li>Apache Hadoop YARN</li><li>Kubernetes</li></ul></li><li>高可用配置<ul><li>高可用的独立部署配置</li><li>高可用的YARN部署配置</li><li>高可用的Kubernetes配置</li></ul></li><li>与Hadoop组件的集成</li><li>文件系统配置</li><li>系统配置<ul><li>Java和类加载</li><li>CPU</li><li>主存</li><li>磁盘存储器</li><li>状态后端、检查点以及恢复</li><li>安全</li></ul></li><li>小结</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      原文链接：https://www.safaribooksonline.com/library/view/stream-processing-with/9781491974285/
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="flink" scheme="https://blog.luckypeng.com/tags/flink/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2018-11-04参加Flink meetup总结</title>
+    <link href="https://blog.luckypeng.com/2018/11/05/flink-meetup-2018-11-04/"/>
+    <id>https://blog.luckypeng.com/2018/11/05/flink-meetup-2018-11-04/</id>
+    <published>2018-11-05T14:45:00.000Z</published>
+    <updated>2019-07-20T13:58:37.137Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Flink在有赞的实践"><a href="#Flink在有赞的实践" class="headerlink" title="Flink在有赞的实践"></a>Flink在有赞的实践</h2><ol><li>实时框架从Storm到Spark Structed Streaming，到今年才开始的Flink尝试</li><li>Spark Structed Streaming对SQL支持不够（如不支持多个聚合、count distinct等）</li><li>Flink的实际踩坑经历：<ul><li>container超过配置的数量，解决：<a href="https://issues.apache.org/jira/browse/FLINK-9567" target="_blank" rel="noopener">FLINK-9567</a></li><li>开启延迟监控后收到太多报警，解决1：<a href="https://issues.apache.org/jira/browse/FLINK-10243" target="_blank" rel="noopener">FLINK-10243</a>；解决2：<a href="https://issues.apache.org/jira/browse/FLINK-10246" target="_blank" rel="noopener">FLINK-10246</a></li></ul></li><li>Flink结合spring：如何获取SpringContext（单例，在算子的open方法中获取bean）</li><li>Flink异步不支持KeyedState（没搞懂。。）</li><li>Flink CEP简介</li></ol><p>小结：刚开始尝试flink，坑比较多，需要紧跟开源社区。<a id="more"></a></p><h2 id="Flink在袋鼠云一站式大数据平台中的使用"><a href="#Flink在袋鼠云一站式大数据平台中的使用" class="headerlink" title="Flink在袋鼠云一站式大数据平台中的使用"></a>Flink在袋鼠云一站式大数据平台中的使用</h2><p>专题演讲：Flink SQL的扩展</p><p>开源地址：<a href="https://github.com/DTStack/flinkStreamSQL" target="_blank" rel="noopener">https://github.com/DTStack/flinkStreamSQL</a></p><p>另外推荐他们开源的离线同步工具，也是用Flink实现的，叫做<a href="https://github.com/DTStack/flinkx" target="_blank" rel="noopener">flinkx</a>，基本上是参考了<a href="https://github.com/alibaba/DataX" target="_blank" rel="noopener">datax</a>的设计思路。</p><ol><li>为什么要扩展Flink SQL<ul><li>实际需要，有些数据就是在外部，而非在流中。</li></ul></li><li>如何实现流与维表的JOIN<ul><li>尽量少修改源码，只在SQL解析时转化成流</li><li>两种方式：<ol><li>LRU维表：继承<code>RichAsyncFunction</code>，相关：Async I/O</li><li>ALL维表：继承<code>RichFlatMapFunction</code></li></ol></li></ul></li></ol><p>小结：推崇SQL的开发效率和学习成本，相信SQL可以解决大部分问题。</p><h2 id="汇智在Flink上的实践"><a href="#汇智在Flink上的实践" class="headerlink" title="汇智在Flink上的实践"></a>汇智在Flink上的实践</h2><p>写在前面：号称做的都是国家安全部门的项目，下面都是虚拟案例。。。</p><p>专题演讲：Flink CEP的一些实践案例，主要就是利用flink的实时处理能力，搭配自研的规则引擎模块，做一些规则匹配与计算。</p><ol><li>案例：商品的实时监控<ul><li>UDF实现：在open方法中，将规则加载到内存</li></ul></li><li>案例：实时在线统计<ul><li>利用flink算子实现</li></ul></li><li>案例：定时器功能<ul><li>使用DataStream API中的process function实现</li></ul></li></ol><p>小结：逻辑简单，但是号称每秒数据量能有百万，估计集群规模也不小。</p><h2 id="Stream-Processing-with-Apache-RocketMQ-and-Apache-Flink"><a href="#Stream-Processing-with-Apache-RocketMQ-and-Apache-Flink" class="headerlink" title="Stream Processing with Apache RocketMQ and Apache Flink"></a>Stream Processing with Apache RocketMQ and Apache Flink</h2><p>小结：没听进去，干货不多，讲了好多RocketMQ的东西。。。</p><h2 id="提高Flink易用性"><a href="#提高Flink易用性" class="headerlink" title="提高Flink易用性"></a>提高Flink易用性</h2><p>小结：讲了很多阿里内部对于Flink使用上的一些努力，听下来觉得很牛逼，但是基本没怎么说怎么实现的。如：资源自动优化、一键诊断等等。</p><p>扩展阅读：<a href="https://mp.weixin.qq.com/s/hike1xQcykFyXpNb6E11tw" target="_blank" rel="noopener">Flink已经足够强大了吗？阿里巴巴说：还不够</a></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次大会干活第一：袋鼠云案例</p><h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>如要下载PPT，请加入钉钉群（扫描下方二维码，或者搜索钉钉群号21789141）</p><p><img src="/images/flink-dingtalk.png" alt="钉钉群"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Flink在有赞的实践&quot;&gt;&lt;a href=&quot;#Flink在有赞的实践&quot; class=&quot;headerlink&quot; title=&quot;Flink在有赞的实践&quot;&gt;&lt;/a&gt;Flink在有赞的实践&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;实时框架从Storm到Spark Structed Streaming，到今年才开始的Flink尝试&lt;/li&gt;
+&lt;li&gt;Spark Structed Streaming对SQL支持不够（如不支持多个聚合、count distinct等）&lt;/li&gt;
+&lt;li&gt;Flink的实际踩坑经历：&lt;ul&gt;
+&lt;li&gt;container超过配置的数量，解决：&lt;a href=&quot;https://issues.apache.org/jira/browse/FLINK-9567&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;FLINK-9567&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;开启延迟监控后收到太多报警，解决1：&lt;a href=&quot;https://issues.apache.org/jira/browse/FLINK-10243&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;FLINK-10243&lt;/a&gt;；解决2：&lt;a href=&quot;https://issues.apache.org/jira/browse/FLINK-10246&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;FLINK-10246&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Flink结合spring：如何获取SpringContext（单例，在算子的open方法中获取bean）&lt;/li&gt;
+&lt;li&gt;Flink异步不支持KeyedState（没搞懂。。）&lt;/li&gt;
+&lt;li&gt;Flink CEP简介&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;小结：刚开始尝试flink，坑比较多，需要紧跟开源社区。
+    
+    </summary>
+    
+      <category term="技术" scheme="https://blog.luckypeng.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="flink" scheme="https://blog.luckypeng.com/tags/flink/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——默认参数值</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/default-parameter-values/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/default-parameter-values/</id>
+    <published>2018-10-28T11:53:00.000Z</published>
+    <updated>2019-07-20T13:58:37.133Z</updated>
+    
+    <content type="html"><![CDATA[<p>Scala提供了默认参数值的功能，允许调用者忽略那些参数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def log(message: String, level: String = &quot;INFO&quot;) = println(s&quot;$level: $message&quot;)</span><br><span class="line"></span><br><span class="line">log(&quot;System starting&quot;)  // prints INFO: System starting</span><br><span class="line">log(&quot;User not found&quot;, &quot;WARNING&quot;)  // prints WARNING: User not found</span><br></pre></td></tr></table></figure><p>参数<code>level</code>拥有一个默认值所以该参数是可选的。最后一行，参数<code>&quot;WARNING&quot;</code>覆盖了默认参数<code>&quot;INFO&quot;</code>。在Java中你可能需要进行重载方法，而在Scala中使用可选参数能够达到同样的效果。但是，如果调用者忽略了一个参数，那么后面的参数必须带上名字。<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Point(val x: Double = 0, val y: Double = 0)</span><br><span class="line"></span><br><span class="line">val point1 = new Point(y = 1)</span><br></pre></td></tr></table></figure><p>这里一定要写上<code>y=1</code>。</p><p>注意，在Java代码中调用时，Scala中的默认参数并不是可选的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// Point.scala</span><br><span class="line">class Point(val x: Double = 0, val y: Double = 0)</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Main.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Point point = <span class="keyword">new</span> Point(<span class="number">1</span>);  <span class="comment">// does not compile</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/default-parameter-values.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——操作符</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/operators/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/operators/</id>
+    <published>2018-10-28T11:48:00.000Z</published>
+    <updated>2019-07-20T13:58:37.151Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Scala中，操作符也是方法。任何带有单个参数的方法可以作为_中缀操作符_来使用。例如：<code>+</code>可以用点表达式来调用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.+(1)</span><br></pre></td></tr></table></figure><p>然而，使用中缀操作符更加便于阅读：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 + 1</span><br></pre></td></tr></table></figure><h2 id="定义和使用操作符"><a href="#定义和使用操作符" class="headerlink" title="定义和使用操作符"></a>定义和使用操作符</h2><p>你可以使用任何合法的标识符来作为操作符。这包括名称（如<code>add</code>）以及符号（如<code>+</code>）。<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">case class Vec(val x: Double, val y: Double) &#123;</span><br><span class="line">  def +(that: Vec) = new Vec(this.x + that.x, this.y + that.y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val vector1 = Vec(1.0, 1.0)</span><br><span class="line">val vector2 = Vec(2.0, 2.0)</span><br><span class="line"></span><br><span class="line">val vector3 = vector1 + vector2</span><br><span class="line">vector3.x  // 3.0</span><br><span class="line">vector3.y  // 3.0</span><br></pre></td></tr></table></figure><p><code>Vec</code>类有一个方法<code>+</code>用于将<code>vector</code>和<code>vector2</code>相加。通过圆括号，你可以用易读的语法来构建复杂的表达式。这里定义了类<code>MyBool</code>，其中包括方法<code>and</code>和<code>or</code>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">case class MyBool(x: Boolean) &#123;</span><br><span class="line">  def and(that: MyBool): MyBool = if (x) that else this</span><br><span class="line">  def or(that: MyBool): MyBool = if (x) this else that</span><br><span class="line">  def negate: MyBool = MyBool(!x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在可以使用<code>and</code>和<code>or</code>来作为中缀操作符了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def not(x: MyBool) = x.negate</span><br><span class="line">def xor(x: MyBool, y: MyBool) = (x or y) and not(x and y)</span><br></pre></td></tr></table></figure><p>这有助于让<code>xor</code>的定义更加可读。</p><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>当一个表达式使用了多个操作符，它们会基于第一个字符的优先级进行评估：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(characters not shown below)</span><br><span class="line">* / %</span><br><span class="line">+ -</span><br><span class="line">:</span><br><span class="line">= !</span><br><span class="line">&lt; &gt;</span><br><span class="line">&amp;</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">(all letters)</span><br></pre></td></tr></table></figure><p>以上优先级会应用到你定义的函数当中去。例如，下面的表达式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b ^? c ?^ d less a ==&gt; b | c</span><br></pre></td></tr></table></figure><p>相当于</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((a + b) ^? (c ?^ d)) less ((a ==&gt; b) | c)</span><br></pre></td></tr></table></figure><p>由于<code>?^</code>以字符<code>?</code>开头所以具有最高优先级，<code>+</code>具有第二优先级，接着是<code>==&gt;</code>、<code>^?</code>、<code>|</code>和<code>less</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/operators.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——传名（By-name)参数</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/by-name-parameters/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/by-name-parameters/</id>
+    <published>2018-10-28T11:45:00.000Z</published>
+    <updated>2019-07-20T13:58:37.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>_传名参数_只有在使用时才会被计算。相对地是_传值（by-value）参数_。要使得参数可以通过传名来调用，只需要在它的类型前加上<code>=&gt;</code>。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def calculate(input: =&gt; Int) = input * 37</span><br></pre></td></tr></table></figure><p>传名参数的优点在于如果它们没有在函数体中使用，就不会被计算。另一方面，传值参数的优点在于它们仅会被计算一次。</p><p>这里有个例子，介绍了我们如何实现一个while循环：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def whileLoop(condition: =&gt; Boolean)(body: =&gt; Unit): Unit =</span><br><span class="line">  if (condition) &#123;</span><br><span class="line">    body</span><br><span class="line">    whileLoop(condition)(body)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">var i = 2</span><br><span class="line"></span><br><span class="line">whileLoop (i &gt; 0) &#123;</span><br><span class="line">  println(i)</span><br><span class="line">  i -= 1</span><br><span class="line">&#125;  // prints 2 1</span><br></pre></td></tr></table></figure><p>方法<code>whileLoop</code>使用多参数列表来接受一个条件和一个循环体。如果<code>condition</code>为真，则<code>body</code>被执行然后递归调用whileLoop。如果<code>condition</code>为假，<code>body</code>将永远不会被计算，因为我们在<code>body</code>类型的前面加了<code>=&gt;</code>。</p><p>现在我们传入<code>i &gt; 0</code>作为我们的<code>condition</code>和<code>println(i); i-= 1</code>作为<code>body</code>，它的表现类似于许多语言中的标准while循环。</p><p>这种使得参数延迟到使用时才被计算的能力，在当参数是计算密集型的或者是一段比较耗时的代码块（比如抓取一个URL）的时候，可以帮助我们提高性能。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/by-name-parameters.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——带名参数</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/named-arguments/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/named-arguments/</id>
+    <published>2018-10-28T11:45:00.000Z</published>
+    <updated>2019-07-20T13:58:37.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>调用方法时，可以使用参数名给参数带上标签，正如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def printName(first: String, last: String): Unit = &#123;</span><br><span class="line">  println(first + &quot; &quot; + last)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printName(&quot;John&quot;, &quot;Smith&quot;)  // Prints &quot;John Smith&quot;</span><br><span class="line">printName(first = &quot;John&quot;, last = &quot;Smith&quot;)  // Prints &quot;John Smith&quot;</span><br><span class="line">printName(last = &quot;Smith&quot;, first = &quot;John&quot;)  // Prints &quot;John Smith&quot;</span><br></pre></td></tr></table></figure><p>注意，带名参数的顺序可以重新调整。然而，如果有些参数是带名的，有些则不是，那么不带名的参数必须在最前面，并且是按照方法定义中参数的顺序出现。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printName(last = &quot;Smith&quot;, &quot;john&quot;) // error: positional after named argument</span><br></pre></td></tr></table></figure><p>注意带名参数不适用于调用Java方法。<a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/named-arguments.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——包和导入</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/packages-and-imports/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/packages-and-imports/</id>
+    <published>2018-10-28T11:45:00.000Z</published>
+    <updated>2019-07-20T13:58:37.152Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="包和导入"><a href="#包和导入" class="headerlink" title="包和导入"></a>包和导入</h1><p>Scala使用包来创建命名空间，允许你对程序进行模块化设计。</p><h2 id="创建包"><a href="#创建包" class="headerlink" title="创建包"></a>创建包</h2><p>通过在Scala文件顶部声明一个或者多个包名来创建包。</p><pre><code>package usersclass User</code></pre><p>一般而言包的命名是和包含Scala文件的目录相同的，然而实际上Scala并不关心文件布局。一个sbt项目中users包的目录结构可能如下所示：<a id="more"></a></p><pre><code>- ExampleProject  - build.sbt  - project  - src    - main      - scala        - users          User.scala          UserProfile.scala          UserPreferences.scala    - test</code></pre><p>注意users目录是怎样包含在Scala目录中，以及是如何包含了多个Scala文件的。包中的每个Scala文件都可以有相同的包声明。另外有一种声明包的方式是使用花括号：</p><pre><code>package users {  package administrators {    class NormalUser  }  package normalusers {    class NormalUser  }}</code></pre><p>正如你所见，该方式允许进行包嵌套，且提供了对于作用域和封装方面更强的控制力。</p><p>包名应该全部小写，另外如果是一个拥有网站的组织来开发代码，那应该按照以下的格式约定：<code>&lt;顶级域名&gt;.&lt;域名&gt;.&lt;项目名&gt;</code>。例如，如果谷歌有个项目叫做<code>SelfDrivingCar</code>，那么包名应该如下：</p><pre><code>package com.google.selfdrivingcar.cameraclass Lens</code></pre><p>这一般会对应到下面的目录结构：<code>SelfDrivingCar/src/main/scala/com/google/selfdrivingcar/camera/Lens.scala</code>。</p><h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>导入语句用于访问其他包中的成员（如类、特质、函数等）。访问相同包中的成员不需要导入语句。导入语句有下面几种方式可选：</p><pre><code>import users._  // import everything from the users packageimport users.User  // import the class Userimport users.{User, UserPreferences}  // Only imports selected membersimport users.{UserPreferences =&gt; UPrefs}  // import and rename for convenience</code></pre><p>Scala中不同于Java的一点是导入语句可以被用在任何地方：</p><pre><code>def sqrtplus1(x: Int) = {  import scala.math.sqrt  sqrt(x) + 1.0}</code></pre><p>如果存在包冲突且需要从项目的根目录导入某些东西的时候，可以在包前面加上<code>_root_</code>：</p><pre><code>package accountsimport _root_.users._</code></pre><p>注意：<code>scala</code>和<code>java.lang</code>包以及<code>object Predef</code>是默认导入的。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/packages-and-imports.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——类型推断</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/type-inference/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/type-inference/</id>
+    <published>2018-10-28T11:45:00.000Z</published>
+    <updated>2019-07-20T13:58:37.169Z</updated>
+    
+    <content type="html"><![CDATA[<p>Scala编译器经常可以推断出一个表达式的类型，所以你可以不必显示地进行声明。</p><h2 id="类型省略"><a href="#类型省略" class="headerlink" title="类型省略"></a>类型省略</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val businessName = &quot;Montreux Jazz Café&quot;</span><br></pre></td></tr></table></figure><p>编译器可以发现<code>businessName</code>是一个字符串。对于方法，也是类似的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def squareOf(x: Int) = x * x</span><br></pre></td></tr></table></figure><p>编译器可以推断出返回类型是<code>Int</code>，所以不需要显式的返回类型。<a id="more"></a></p><p>对于递归方法，编译器不能推断出它的返回类型。下面的这段程序正是这个原因导致了编译失败：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)</span><br></pre></td></tr></table></figure><p>同样地，在调用<a href="polymorphic-methods.html">多态方法</a>或者实例化<a href="generic-classes.html">泛型类</a>时，也不需要强制明确类型参数。Scala编译器会从上下文和实际的方法（或者构造器）中的参数类型推断出缺失的类型参数。</p><p>下面有2个例子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">case class MyPair[A, B](x: A, y: B);</span><br><span class="line">val p = MyPair(1, &quot;scala&quot;) // type: MyPair[Int, String]</span><br><span class="line"></span><br><span class="line">def id[T](x: T) = x</span><br><span class="line">val q = id(1)              // type: Int</span><br></pre></td></tr></table></figure><p>编译器使用<code>MyPair</code>的参数类型确定了<code>A</code>和<code>B</code>的类型，后面<code>x</code>的类型也是一样的。</p><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>编译器永远不会推断方法的参数类型。然而，在某些特定例子中，当一个匿名函数作为参数传入时，是可以推断出函数的参数类型的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seq(1, 3, 4).map(x =&gt; x * 2)  // List(2, 6, 8)</span><br></pre></td></tr></table></figure><p><code>map</code>的参数是<code>f: A =&gt; B</code>。因为我们将整数放入<code>Seq</code>，所以编译器知道<code>A</code>是<code>Int</code>（即<code>x</code>是一个整数）。因此，编译器可以从<code>x * 2</code>推断出<code>B</code>是<code>Int</code>类型。</p><h2 id="何时不依赖于类型推断"><a href="#何时不依赖于类型推断" class="headerlink" title="何时不依赖于类型推断"></a>何时不依赖于类型推断</h2><p>一般认为，对于暴露在公共API中的成员进行显式声明类型更具可读性。因此，我们推荐对于那些将暴露给你的用户的API，进行显式声明类型。</p><p>同时，类型推断有时会推断出一个尤其特殊的类型。假如我们这样写：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = null</span><br></pre></td></tr></table></figure><p>那么我们不能继续这样的重新赋值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj = new AnyRef</span><br></pre></td></tr></table></figure><p>这样不会通过编译，因为<code>obj</code>的类型推断是<code>Null</code>，而该类型的唯一值是<code>null</code>，所以不可能分配一个不同的值。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/type-inference.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——多态方法</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/polymorphic-methods/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/polymorphic-methods/</id>
+    <published>2018-10-28T11:41:00.000Z</published>
+    <updated>2019-07-20T13:58:37.153Z</updated>
+    
+    <content type="html"><![CDATA[<p>Scala中的方法可以通过类型和值来进行参数化。它的语法和泛型类是接近的。类型参数是用方括号括起来，而值参数是用圆括号括起来。</p><p>下面是示例：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def listOfDuplicates[A](x: A, length: Int): List[A] = &#123;</span><br><span class="line">  if (length &lt; 1)</span><br><span class="line">    Nil</span><br><span class="line">  else</span><br><span class="line">    x :: listOfDuplicates(x, length - 1)</span><br><span class="line">&#125;</span><br><span class="line">println(listOfDuplicates[Int](3, 4))  // List(3, 3, 3, 3)</span><br><span class="line">println(listOfDuplicates(&quot;La&quot;, 8))  // List(La, La, La, La, La, La, La, La)</span><br></pre></td></tr></table></figure><p>方法<code>listOfDuplicates</code>接受一个类型参数<code>A</code>以及值参数<code>x</code>和<code>length</code>。值<code>x</code>是<code>A</code>类型的。如果<code>length &lt; 1</code>我们会返回一个空的列表。否则我们会通过递归调用来将<code>x</code>加到列表副本的前面。（注：<code>::</code>意味着将左边的元素加入到右边列表的前面。）</p><p>第一次调用的时候，我们通过写下<code>[Int]</code>从而显式提供了类型参数。因此第一个参数必定为一个<code>Int</code>且返回类型是<code>List[Int]</code>。</p><p>第二次调用表明你不必总是显式地提供类型参数。编译器一般可以根据上下文或者值参数的类型来推断出来。这个例子当中，<code>&quot;La&quot;</code>是一个<code>String</code>所以编译器知道<code>A</code>必定为<code>String</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/polymorphic-methods.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——多参数列表（柯里化）</title>
+    <link href="https://blog.luckypeng.com/2018/10/28/multiple-parameter-lists/"/>
+    <id>https://blog.luckypeng.com/2018/10/28/multiple-parameter-lists/</id>
+    <published>2018-10-28T11:35:20.000Z</published>
+    <updated>2019-07-20T13:58:37.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个方法可以定义多参数列表。当调用一个不全的参数列表的方法时，会产生一个函数并将缺少的参数列表作为参数。这有个正式定义叫<a href="https://en.wikipedia.org/wiki/Currying" target="_blank" rel="noopener">柯里化</a>。</p><p>下面的例子定义在Scala集合中的<a href="/overviews/collections/trait-traversable.html">Traversable</a>特质当中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def foldLeft[B](z: B)(op: (B, A) =&gt; B): B</span><br></pre></td></tr></table></figure><p><code>foldLeft</code>按照从左往右的顺序，将二进制运算符<code>op</code>作用于初始值<code>z</code>和这个<code>traversable</code>中的所有元素。下面展示了它的用法。<a id="more"></a></p><p>从一个初始值0开始，<code>foldleft</code>将函数<code>(m, n) =&gt; m + n</code>作用于列表中的每个元素和上一次的累计值。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</span><br><span class="line">val res = numbers.foldLeft(0)((m, n) =&gt; m + n)</span><br><span class="line">print(res) // 55</span><br></pre></td></tr></table></figure><p>多参数列表具有比较冗长的调用语法，因此要谨慎使用。建议使用的场景包括以下：</p><h4 id="单个函数参数"><a href="#单个函数参数" class="headerlink" title="单个函数参数"></a>单个函数参数</h4><p>在单个函数参数的场景（如上面<code>foldleft</code>中的<code>op</code>）中，多参数列表允许使用简洁的语法将匿名函数传递给方法。如果没有多参数列表，代码将会是这样：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers.foldLeft(0, &#123;(m: Int, n: Int) =&gt; m + n&#125;)</span><br></pre></td></tr></table></figure><p>注意这里多参数列表的用法还可以让我们利用Scala类型推断来让代码变得更加简洁，这在不用柯里化来定义的情况下是做不到的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers.foldLeft(0)(_ + _)</span><br></pre></td></tr></table></figure><p>上面的语句<code>numbers.foldLeft(0)(_ + _)</code>允许我们固定参数<code>z</code>，然后传递一个偏函数进行使用，正如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</span><br><span class="line">val numberFunc = numbers.foldLeft(List[Int]())_</span><br><span class="line"></span><br><span class="line">val squares = numberFunc((xs, x) =&gt; xs:+ x*x)</span><br><span class="line">print(squares.toString()) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)</span><br><span class="line"></span><br><span class="line">val cubes = numberFunc((xs, x) =&gt; xs:+ x*x*x)</span><br><span class="line">print(cubes.toString())  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)</span><br></pre></td></tr></table></figure><p>最后说下，<code>foldLeft</code>和<code>foldRight</code>可以使用下面任意一种用法来调用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</span><br><span class="line"></span><br><span class="line">numbers.foldLeft(0)((sum, item) =&gt; sum + item) // Generic Form</span><br><span class="line">numbers.foldRight(0)((sum, item) =&gt; sum + item) // Generic Form</span><br><span class="line"></span><br><span class="line">numbers.foldLeft(0)(_+_) // Curried Form</span><br><span class="line">numbers.foldRight(0)(_+_) // Curried Form</span><br><span class="line"></span><br><span class="line">(0 /: numbers)(_+_) // Used in place of foldLeft</span><br><span class="line">(numbers :\ 0)(_+_) // Used in place of foldRight</span><br></pre></td></tr></table></figure><h4 id="隐式参数"><a href="#隐式参数" class="headerlink" title="隐式参数"></a>隐式参数</h4><p>如果要将参数列表中的某些参数指定为<code>implicit</code>，则应该使用多参数列表。如下所示：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def execute(arg: Int)(implicit ec: ExecutionContext) = ???</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/multiple-parameter-lists.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——注解</title>
+    <link href="https://blog.luckypeng.com/2018/10/23/annotations/"/>
+    <id>https://blog.luckypeng.com/2018/10/23/annotations/</id>
+    <published>2018-10-23T01:33:11.000Z</published>
+    <updated>2019-07-20T13:58:37.081Z</updated>
+    
+    <content type="html"><![CDATA[<p>注解将元信息和定义关联起来。例如，注解方法前的<code>@deprecated</code>会使得编译器在该方法被调用时打印一条警告。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">object DeprecationDemo extends App &#123;</span><br><span class="line">  @deprecated(&quot;deprecation message&quot;, &quot;release # which deprecates method&quot;)</span><br><span class="line">  def hello = &quot;hola&quot;</span><br><span class="line"></span><br><span class="line">  hello  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上述代码可以通过编译但是编译器会打印一条警告：“there was one deprecation warning”。</p><p>注解子句用于其后的第一个定义或者声明。一个定义或者声明的前面可以出现不止一个注解子句，而它们的顺序并不重要。<a id="more"></a></p><h2 id="确保编码正确的注解"><a href="#确保编码正确的注解" class="headerlink" title="确保编码正确的注解"></a>确保编码正确的注解</h2><p>某些注解会在条件不满足的情况下导致编译失败。例如，注解<code>@tailrec</code>可以确保一个方法是<a href="https://en.wikipedia.org/wiki/Tail_call" target="_blank" rel="noopener">尾递归</a>。尾递归可以使得内存需求是固定的。下面是该注解在计算阶乘的方法中的使用情况：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import scala.annotation.tailrec</span><br><span class="line"></span><br><span class="line">def factorial(x: Int): Int = &#123;</span><br><span class="line"></span><br><span class="line">  @tailrec</span><br><span class="line">  def factorialHelper(x: Int, accumulator: Int): Int = &#123;</span><br><span class="line">    if (x == 1) accumulator else factorialHelper(x - 1, accumulator * x)</span><br><span class="line">  &#125;</span><br><span class="line">  factorialHelper(x, 1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>factorialHelper</code>方法拥有注解<code>@tailrec</code>，可以确保该方法的确是尾递归的。如果我们按照下面的方式改变该方法的实现，则会编译失败：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import scala.annotation.tailrec</span><br><span class="line"></span><br><span class="line">def factorial(x: Int): Int = &#123;</span><br><span class="line">  @tailrec</span><br><span class="line">  def factorialHelper(x: Int): Int = &#123;</span><br><span class="line">    if (x == 1) 1 else x * factorialHelper(x - 1)</span><br><span class="line">  &#125;</span><br><span class="line">  factorialHelper(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>我们将得到提示信息“Recursive call not in tail position”。</p><h2 id="影响代码生成的注解"><a href="#影响代码生成的注解" class="headerlink" title="影响代码生成的注解"></a>影响代码生成的注解</h2><p>有些注解（如<code>@inline</code>）会影响代码的生成（即生成的jar文件跟不使用注解相比可能具有不同的字节大小）。内联（inlining）的意思是将方法体中的代码直接插入到调用的位置。这样生成的字节码会更长，但是运行会更快。使用注解<code>@inline</code>无法确保一个方法会变成内联的，当且仅当通过了关于生成代码规模的一些尝试之后，编译器会将该方法变成内联的。</p><h3 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h3><p>在写与Java进行互操作的Scala代码时，在注解的语法上有些不同点需要注意。</p><p><strong>注：</strong>在使用Java注解时必须带上选项<code>-target:jvm-1.8</code>。</p><p>Java可以通过<a href="https://docs.oracle.com/javase/tutorial/java/annotations/" target="_blank" rel="noopener">注解</a>的形式来拥有用户自定义的元数据。注解的关键特性是依赖于对指定的名-值对进行初始化。例如我们需要一个注解来追踪某些类的来源，可能会这样来定义：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@interface Source &#123;</span><br><span class="line">  public String URL();</span><br><span class="line">  public String mail();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>接下来可以这样来使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Source(URL = &quot;http://coders.com/&quot;,</span><br><span class="line">        mail = &quot;support@coders.com&quot;)</span><br><span class="line">public class MyClass extends HisClass ...</span><br></pre></td></tr></table></figure><p>在Scala中使用注解像是在调用构造器，要实例化一个Java注解需要指定参数名：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Source(URL = &quot;http://coders.com/&quot;,</span><br><span class="line">        mail = &quot;support@coders.com&quot;)</span><br><span class="line">class MyScalaClass ...</span><br></pre></td></tr></table></figure><p>当注解仅有一个元素的时候这种语法便有点繁琐。所以习惯上，如果元素名称被指定为<code>value</code>，那么在Java中可以用类似于构造器的语法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@interface SourceURL &#123;</span><br><span class="line">    public String value();</span><br><span class="line">    public String mail() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后这样使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@SourceURL(&quot;http://coders.com/&quot;)</span><br><span class="line">public class MyClass extends HisClass ...</span><br></pre></td></tr></table></figure><p>这个例子中，Scala的用法也是类似的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@SourceURL(&quot;http://coders.com/&quot;)</span><br><span class="line">class MyScalaClass ...</span><br></pre></td></tr></table></figure><p>这里<code>mail</code>元素被指定了一个默认值，所以不需要为它显式提供一个值。然而，如果需要给它提供值，在Java中不能混搭这两种形式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@SourceURL(value = &quot;http://coders.com/&quot;,</span><br><span class="line">           mail = &quot;support@coders.com&quot;)</span><br><span class="line">public class MyClass extends HisClass ...</span><br></pre></td></tr></table></figure><p>Scala则在这方面提供了更多的灵活性：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@SourceURL(&quot;http://coders.com/&quot;,</span><br><span class="line">           mail = &quot;support@coders.com&quot;)</span><br><span class="line">    class MyScalaClass ...</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/annotations.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——隐式转换</title>
+    <link href="https://blog.luckypeng.com/2018/09/21/implicit-conversions/"/>
+    <id>https://blog.luckypeng.com/2018/09/21/implicit-conversions/</id>
+    <published>2018-09-21T02:22:45.000Z</published>
+    <updated>2019-07-20T13:58:37.141Z</updated>
+    
+    <content type="html"><![CDATA[<p>从类型<code>S</code>到类型<code>T</code>的隐式转换，由一个拥有函数类型<code>S =&gt; T</code>的隐式值，或者一个可转换为指定类型的隐式方法所定义。</p><p>隐式转换适用于以下2中场景：</p><ul><li>如果一个表达式<code>e</code>是<code>S</code>类型的，且<code>S</code>类型不能转换成表达式所期望的<code>T</code>类型。</li><li>在一个<code>S</code>类型的<code>e</code>的选择器<code>e.m</code>中，如果<code>m</code>不是<code>S</code>的成员。</li></ul><p>第一种场景中，会去查找一个适用于<code>e</code>且其返回类型可以转换为<code>T</code>的转换<code>c</code>。</p><p>第二种场景中，则会去查找一个适用于<code>e</code>且其返回结果包含了一个名为<code>m</code>的成员的转换<code>c</code>。</p><p>如果隐式方法<code>List[A] =&gt; Ordered[List[A]]</code>和<code>Int =&gt; Ordered[Int]</code>都在作用域内，那么对于下面两个<code>List[Int]</code>类型的列表的操作是合法的：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List(1, 2, 3) &lt;= List(4, 5)</span><br></pre></td></tr></table></figure><p>隐式方法<code>Int =&gt; Ordered[Int]</code>由<code>scala.Predef.intWrapper</code>自动提供。下面提供了一个 <code>List[A] =&gt; Ordered[List[A]]</code> 的隐式方法的实现样例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import scala.language.implicitConversions</span><br><span class="line"></span><br><span class="line">implicit def list2ordered[A](x: List[A])</span><br><span class="line">    (implicit elem2ordered: A =&gt; Ordered[A]): Ordered[List[A]] =</span><br><span class="line">  new Ordered[List[A]] &#123; </span><br><span class="line">    //replace with a more useful implementation</span><br><span class="line">    def compare(that: List[A]): Int = 1</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>隐式导入的对象<code>scala.Predef</code>声明了几个预定义的类型（比如<code>Pair</code>）和方法（比如<code>assert</code>），以及一些隐式转换。</p><p>例如，在调用一个Java方法且需要一个<code>java.lang.Integer</code>时，你可以传入一个<code>scala.Int</code>来代替。这是因为<code>Predef</code>中包含了以下的隐式转换：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import scala.language.implicitConversions</span><br><span class="line"></span><br><span class="line">implicit def int2Integer(x: Int) =</span><br><span class="line">  java.lang.Integer.valueOf(x)</span><br></pre></td></tr></table></figure><p>因为随意使用隐式转换可能出现难以预料的问题，所以在编译隐式转换的定义时编译器会发出警告。</p><p>可以通过以下任意一种方法来关闭警告：</p><ul><li>导入<code>scala.language.implicitConversions</code>到隐式转换定义的作用域中。</li><li>给编译器带上参数<code>-language:implicitConversions</code></li></ul><p>这样在做转换时，编译器将不会发生警告。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/implicit-conversions.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——自身类型</title>
+    <link href="https://blog.luckypeng.com/2018/09/13/self-types/"/>
+    <id>https://blog.luckypeng.com/2018/09/13/self-types/</id>
+    <published>2018-09-13T01:45:48.000Z</published>
+    <updated>2019-07-20T13:58:37.157Z</updated>
+    
+    <content type="html"><![CDATA[<p>自身类型是声明一个特质必须混入另外一种特质的方法，即使它并不继承。这使得不需要引入就可以使用依赖的成员。</p><p>自身类型可以缩短<code>this</code>类型或者其他别名为<code>this</code>的标识符。这种语法看起来像是普通的函数语法，但意思是完全不同的。</p><p>为了在特质中使用自身类型，需要写一个混入的其他特质的类型的标识符，以及一个<code>=&gt;</code>（例如<code>someIdentifier: SomeOtherTrait =&gt;</code>）。<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">trait User &#123;</span><br><span class="line">  def username: String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trait Tweeter &#123;</span><br><span class="line">  this: User =&gt;  // reassign this</span><br><span class="line">  def tweet(tweetText: String) = println(s&quot;$username: $tweetText&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class VerifiedTweeter(val username_ : String) extends Tweeter with User &#123;  // We mixin User because Tweeter required it</span><br><span class="line">def username = s&quot;real $username_&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val realBeyoncé = new VerifiedTweeter(&quot;Beyoncé&quot;)</span><br><span class="line">realBeyoncé.tweet(&quot;Just spilled my glass of lemonade&quot;)  // prints &quot;real Beyoncé: Just spilled my glass of lemonade&quot;</span><br></pre></td></tr></table></figure><p>当我们在<code>trait Tweeter</code>中写到<code>this: User =&gt;</code>，这时在<code>tweet</code>方法中<code>username</code>变量便处于作用域当中。这也意味着<code>VerifiedTweeter</code>要继承<code>Tweeter</code>的话，还必须要混入<code>User</code>（使用<code>with User</code>）。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/self-types.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——隐式参数</title>
+    <link href="https://blog.luckypeng.com/2018/09/12/implicit-parameters/"/>
+    <id>https://blog.luckypeng.com/2018/09/12/implicit-parameters/</id>
+    <published>2018-09-12T14:09:21.000Z</published>
+    <updated>2019-07-20T13:58:37.141Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个方法可以拥有隐式参数列表，它由_implicit_关键字在参数列表的开头作为标记。如果这个参数列表的参数没有正常传递的话，Scala会去查找一个正确类型的隐式值，如果找到了，则会自动传递。</p><p>Scala查找找些参数的位置分以下2种类型：</p><ul><li>在带有隐式参数块的方法被调用时，Scala首先会查找可以直接访问（不需要加前缀）的隐式定义和隐式参数。</li><li>然后会查找与隐式候选类型相关联的所有伴生对象中标记为implicit的成员。</li></ul><p>关于Scala查找隐式值的位置，在<a href="//docs.scala-lang.org/tutorials/FAQ/finding-implicits.html">the FAQ</a>有更加详细的讲解。<a id="more"></a></p><p>下面的例子中我们定义了一个方法<code>sum</code>，通过使用<code>Monid</code>的<code>add</code>和<code>unit</code>的操作来计算列表中元素的和。注意下面的隐式值不能在顶层。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">abstract class Monoid[A] &#123;</span><br><span class="line">  def add(x: A, y: A): A</span><br><span class="line">  def unit: A</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">object ImplicitTest &#123;</span><br><span class="line">  implicit val stringMonoid: Monoid[String] = new Monoid[String] &#123;</span><br><span class="line">    def add(x: String, y: String): String = x concat y</span><br><span class="line">    def unit: String = &quot;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  implicit val intMonoid: Monoid[Int] = new Monoid[Int] &#123;</span><br><span class="line">    def add(x: Int, y: Int): Int = x + y</span><br><span class="line">    def unit: Int = 0</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  def sum[A](xs: List[A])(implicit m: Monoid[A]): A =</span><br><span class="line">    if (xs.isEmpty) m.unit</span><br><span class="line">    else m.add(xs.head, sum(xs.tail))</span><br><span class="line">    </span><br><span class="line">  def main(args: Array[String]): Unit = &#123;</span><br><span class="line">    println(sum(List(1, 2, 3)))       // uses IntMonoid implicitly</span><br><span class="line">    println(sum(List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))) // uses StringMonoid implicitly</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里<code>Monid</code>类定义了一个方法<code>add</code>，用来组合一对<code>A</code>类型的值并且返回一个<code>A</code>类型的值，另外定义了一个<code>unit</code>方法用来创建一个具体的<code>A</code>类型的值。</p><p>为了展示隐式参数是如何起作用的，我们首先定义了针对字符串和整数的<code>Monoid</code>，分别是<code>StringMonoid</code>和<code>IntMoniod</code>。关键字<code>implicit</code>表明了相关的对象可以被隐式使用。</p><p>方法<code>sum</code>接受一个<code>List[A]</code>并且返回一个<code>A</code>，它从<code>unit</code>方法中获取一个<code>A</code>类型的初始值，然后使用<code>add</code>方法，对于列表中的每一个<code>A</code>类型的值进行组合。这里我们让参数<code>m</code>成为隐式的，意味着在调用方法的时候仅需要提供<code>xs</code>参数，其中前提是Scala可以查找到一个隐式的<code>Monoid[A]</code>来用于隐式的<code>m</code>参数。</p><p>在<code>main</code>方法中我们调用了<code>sum</code>两次，但是仅仅提供了<code>xs</code>参数。Scala会在上文提到的范围中寻找一个隐式值。第一次调用<code>sum</code>方法传递了一个<code>List[Int]</code>给<code>xs</code>，意味着<code>A</code>是<code>Int</code>。隐式参数列表<code>m</code>被忽略了，所以Scala会去查找一个<code>Monoid[Int]</code>类型的隐式值。首先应用第一条查找规则</p><blockquote><p>在带有隐式参数块的方法被调用时，Scala首先会查找可以直接访问（不需要加前缀）的隐式定义和隐式参数。</p></blockquote><p><code>intMonoid</code>是一个隐式的定义，且可以在<code>main</code>方法中直接访问，并且是正确的类型，所以会自动地传递给<code>sum</code>方法。</p><p>第二次调用<code>sum</code>时传递了一个<code>List[String]</code>，意味着<code>A</code>是<code>String</code>。此时隐式查找的方式会和<code>Int</code>一样，但这次查找到的是<code>stringMonoid</code>，并且自动传递给参数<code>m</code>。</p><p>该程序输出如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">abc</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/implicit-parameters.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——复合类型</title>
+    <link href="https://blog.luckypeng.com/2018/09/11/compound-types/"/>
+    <id>https://blog.luckypeng.com/2018/09/11/compound-types/</id>
+    <published>2018-09-11T14:00:19.000Z</published>
+    <updated>2019-07-20T13:58:37.086Z</updated>
+    
+    <content type="html"><![CDATA[<p>有时候需要表达一个对象的类型是多个其他类型的子类型，在Scala中使用<em>复合类型</em>可以做到，这时它是多个类型的交集。</p><p>假设已有2个特质<code>Cloneable</code>和<code>Resetable</code>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">trait Cloneable extends java.lang.Cloneable &#123;</span><br><span class="line">  override def clone(): Cloneable = &#123;</span><br><span class="line">    super.clone().asInstanceOf[Cloneable]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">trait Resetable &#123;</span><br><span class="line">  def reset: Unit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在如果我们需要写一个函数<code>cloneAndReset</code>，它接受一个对象，克隆并且重置它：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def cloneAndReset(obj: ?): Cloneable = &#123;</span><br><span class="line">  val cloned = obj.clone()</span><br><span class="line">  obj.reset</span><br><span class="line">  cloned</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在问题来了，参数<code>obj</code>到底是什么类型的呢？如果是<code>Cloneable</code>的，那么只能被<code>clone</code>但不能<code>reset</code>；如果是<code>Resetable</code>的，那么却又只能<code>reset</code>但不能进行<code>clone</code>操作。这种情况下，为了避免类型转换，我们可以声明<code>obj</code>的类型既是<code>Cloneable</code>又是<code>Resetable</code>。这种复合类型在Scala中写作：<code>Cloneable with Resetable</code>。</p><p>下面是修改后的函数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def cloneAndReset(obj: Cloneable with Resetable): Cloneable = &#123;</span><br><span class="line">  //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>复合类型可以包含多个对象类型，它有一种改良（refinement）可以用来缩短现有对象成员的签名。</p><p>基本形式如下：<code>A with B with C ... { refinement }</code></p><p>关于改良的用法，在<a href="abstract-types.html">抽象类型</a>一节中有案例介绍。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/compound-types.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——抽象类型</title>
+    <link href="https://blog.luckypeng.com/2018/09/10/abstract-types/"/>
+    <id>https://blog.luckypeng.com/2018/09/10/abstract-types/</id>
+    <published>2018-09-10T14:29:53.000Z</published>
+    <updated>2019-07-20T13:58:37.080Z</updated>
+    
+    <content type="html"><![CDATA[<p>特质和抽象类可以拥有抽象类型的成员。这意味着具体的实现可以定义实际的类型，下面是示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">trait Buffer &#123;</span><br><span class="line">  type T</span><br><span class="line">  val element: T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里我们定义了一个抽象的<code>type T</code>，用来描述<code>element</code>的类型。我们可以在抽象类中继承该特质，并为<code>T</code>增加了一个类型上界使之更为具体。<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">abstract class SeqBuffer extends Buffer &#123;</span><br><span class="line">  type U</span><br><span class="line">  type T &lt;: Seq[U]</span><br><span class="line">  def length = element.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意我们将如何使用作为类型上界的另一个抽象的<code>type U</code>。<code>class SeqBuffer</code>通过声明一个<code>Seq[U]</code>（这里<code>U</code>是一个新的抽象类型）的子类型<code>T</code>，使得我们在一个<code>Buffer</code>中只能存储序列。</p><p>拥有抽象成员的特质和<a href="classes.html">类</a>经常与匿名类的实例化结合使用。为了说明这点，我们来看一段程序，其中涉及到一个指向整数列表的序列缓冲：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">abstract class IntSeqBuffer extends SeqBuffer &#123;</span><br><span class="line">  type U = Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =</span><br><span class="line">  new IntSeqBuffer &#123;</span><br><span class="line">       type T = List[U]</span><br><span class="line">       val element = List(elem1, elem2)</span><br><span class="line">     &#125;</span><br><span class="line">val buf = newIntSeqBuf(7, 8)</span><br><span class="line">println(&quot;length = &quot; + buf.length)</span><br><span class="line">println(&quot;content = &quot; + buf.element)</span><br></pre></td></tr></table></figure><p>这里的工厂方法<code>newIntSeqBuf</code>用到了<code>IntSeqBuf</code>的一个匿名实现类（即<code>new IntSeqBuffer</code>），并将<code>type T</code>设置为一个<code>List[Int]</code>。</p><p>也可以将抽象类型成员转换为类的类型参数，反之亦然。下面是上述代码的另外一个版本，但仅仅使用了类型参数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">abstract class Buffer[+T] &#123;</span><br><span class="line">  val element: T</span><br><span class="line">&#125;</span><br><span class="line">abstract class SeqBuffer[U, +T &lt;: Seq[U]] extends Buffer[T] &#123;</span><br><span class="line">  def length = element.length</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def newIntSeqBuf(e1: Int, e2: Int): SeqBuffer[Int, Seq[Int]] =</span><br><span class="line">  new SeqBuffer[Int, List[Int]] &#123;</span><br><span class="line">    val element = List(e1, e2)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">val buf = newIntSeqBuf(7, 8)</span><br><span class="line">println(&quot;length = &quot; + buf.length)</span><br><span class="line">println(&quot;content = &quot; + buf.element)</span><br></pre></td></tr></table></figure><p>为了隐藏方法<code>new IntSeqBuf</code>返回的对象的具体序列实现类型，我们需要用到<a href="variances.html">型变注解</a>(即<code>+T &lt;: Seq[U]</code>)。此外，有些场景下是不能用类型参数来替换抽象类型的。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/abstract-types.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——内部类</title>
+    <link href="https://blog.luckypeng.com/2018/09/08/inner-classes/"/>
+    <id>https://blog.luckypeng.com/2018/09/08/inner-classes/</id>
+    <published>2018-09-08T05:31:12.000Z</published>
+    <updated>2019-07-20T13:58:37.142Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Scala中，可以在类中拥有别的类作为其成员。与Java语言中内部类是包含它的类的成员相反，Scala中这些内部类是绑定在它的外部对象上的。如果想要在混合属于不同图的节点的时候，编译器能够在编译时阻止我们，那么路径依赖类型（Path-dependent types）提供了一种方案。<a id="more"></a></p><p>为了说明二者的区别，我们快速实现了图类型：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Graph &#123;</span><br><span class="line">  class Node &#123;</span><br><span class="line">    var connectedNodes: List[Node] = Nil</span><br><span class="line">    def connectTo(node: Node) &#123;</span><br><span class="line">      if (connectedNodes.find(node.equals).isEmpty) &#123;</span><br><span class="line">        connectedNodes = node :: connectedNodes</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  var nodes: List[Node] = Nil</span><br><span class="line">  def newNode: Node = &#123;</span><br><span class="line">    val res = new Node</span><br><span class="line">    nodes = res :: nodes</span><br><span class="line">    res</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>该程序表明图是节点的列表（<code>List[Node]</code>）。每个节点拥有一个连接到其他节点（<code>connectedNodes</code>）的列表。<code>class Node</code>由于嵌套在<code>class Graph</code>当中，因而是路径依赖类型。因此，<code>connectedNodes</code>中的所有节点必须由<code>Graph</code>的相同实例来使用<code>newNode</code>进行创建。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val graph1: Graph = new Graph</span><br><span class="line">val node1: graph1.Node = graph1.newNode</span><br><span class="line">val node2: graph1.Node = graph1.newNode</span><br><span class="line">val node3: graph1.Node = graph1.newNode</span><br><span class="line">node1.connectTo(node2)</span><br><span class="line">node3.connectTo(node1)</span><br></pre></td></tr></table></figure><p>这里我们显式地声明了<code>node1</code>、<code>node2</code>和<code>node3</code>为<code>graph1.Node</code>，其实编译器也能推断出来。因为我们在调用<code>graph1.newNode</code>时，它调用了<code>new Node</code>，该方法使用的其实是特定实例<code>graph1</code>的<code>node</code>实例。</p><p>如果我们有2个图，Scala的类型系统不允许我们把不同图的节点混合在一起，因为不同图的节点的类型是不一样的。</p><p>下面是错误示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val graph1: Graph = new Graph</span><br><span class="line">val node1: graph1.Node = graph1.newNode</span><br><span class="line">val node2: graph1.Node = graph1.newNode</span><br><span class="line">node1.connectTo(node2)      // legal</span><br><span class="line">val graph2: Graph = new Graph</span><br><span class="line">val node3: graph2.Node = graph2.newNode</span><br><span class="line">node1.connectTo(node3)      // illegal!</span><br></pre></td></tr></table></figure><p><code>graph1.Node</code>与<code>graph2.Node</code>的类型是不同的。而在Java中，上面这段程序的最后一行是正确。对于不同图的节点来说，Java会分配相同的类型<code>Graph.Node</code>（即类<code>Graph</code>是<code>Node</code>的前缀）。在Scala中这种类型可以被写作<code>Graph#Node</code>。如果想要连接不同图的节点，我们需要按照下面的方式改变最开始对于图的实现：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Graph &#123;</span><br><span class="line">  class Node &#123;</span><br><span class="line">    var connectedNodes: List[Graph#Node] = Nil</span><br><span class="line">    def connectTo(node: Graph#Node) &#123;</span><br><span class="line">      if (connectedNodes.find(node.equals).isEmpty) &#123;</span><br><span class="line">        connectedNodes = node :: connectedNodes</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  var nodes: List[Node] = Nil</span><br><span class="line">  def newNode: Node = &#123;</span><br><span class="line">    val res = new Node</span><br><span class="line">    nodes = res :: nodes</span><br><span class="line">    res</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/inner-classes.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——型变</title>
+    <link href="https://blog.luckypeng.com/2018/09/07/variances/"/>
+    <id>https://blog.luckypeng.com/2018/09/07/variances/</id>
+    <published>2018-09-07T02:11:53.000Z</published>
+    <updated>2019-07-20T13:58:37.170Z</updated>
+    
+    <content type="html"><![CDATA[<p>型变是复杂类型的子类型关系与它们组件的类型的子类型关系之间的关联性。Scala支持 <a href="generic-classes.html">泛型类</a>的类型参数上的型变注解，可以使得它们是协变的、逆变的或者不变的（如果没有使用注解的话）。型变在类型系统中的使用使得我们在复杂的类型之间建立起了直观的联系，反之如果没有型变则限制了抽象类的重用。<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Foo[+A] // 协变类</span><br><span class="line">class Bar[-A] // 逆变类</span><br><span class="line">class Baz[A]  // 不变类</span><br></pre></td></tr></table></figure><h3 id="协变"><a href="#协变" class="headerlink" title="协变"></a>协变</h3><p>泛型类的类型参数<code>A</code>可以通过使用注解<code>+A</code>变成协变的。对于某个<code>class List[+A]</code>，让<code>A</code>协变意味着对于类型<code>A</code>和<code>B</code>，如果<code>A</code>是<code>B</code>的子类型，那么<code>List[A]</code>则是<code>List[B]</code>的子类型。这让我们可以使用泛型类来创建非常有用且直观的子类型关系。</p><p>现在来看下面这个简单的类结构：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">abstract class Animal &#123;</span><br><span class="line">  def name: String</span><br><span class="line">&#125;</span><br><span class="line">case class Cat(name: String) extends Animal</span><br><span class="line">case class Dog(name: String) extends Animal</span><br></pre></td></tr></table></figure><p><code>Cat</code>和<code>Dog</code>都是<code>Animal</code>的子类型。Scala的标准库中有一个常用的不可变类<code>sealed abstract class List[+A]</code> ，它的类型参数<code>A</code>就是协变的。这意味着<code>List[Cat]</code>是一个<code>List[Animal]</code>而 <code>List[Dog]</code>也是一个<code>List[Animal]</code>。从直观上，一个猫的列表和一个狗的列表都是一个动物列表是讲得通的。因而你可以把它们其中任意一个替换为<code>List[Animal]</code>来使用。</p><p>下面的例子当中，方法<code>printAnimalNames</code>会接受一个动物列表作为参数，并且依次在新的一行里打印它们的名字。如果<code>List[A]</code>不是协变的，则下面两个方法的调用不会通过编译，这将严重限制了<code>printAnimalNames</code>方法的使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">object CovarianceTest extends App &#123;</span><br><span class="line">  def printAnimalNames(animals: List[Animal]): Unit = &#123;</span><br><span class="line">    animals.foreach &#123; animal =&gt;</span><br><span class="line">      println(animal.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  val cats: List[Cat] = List(Cat(&quot;Whiskers&quot;), Cat(&quot;Tom&quot;))</span><br><span class="line">  val dogs: List[Dog] = List(Dog(&quot;Fido&quot;), Dog(&quot;Rex&quot;))</span><br><span class="line"></span><br><span class="line">  printAnimalNames(cats)</span><br><span class="line">  // Whiskers</span><br><span class="line">  // Tom</span><br><span class="line"></span><br><span class="line">  printAnimalNames(dogs)</span><br><span class="line">  // Fido</span><br><span class="line">  // Rex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a>逆变</h3><p>泛型类的类型参数<code>A</code>可以通过使用注解<code>-A</code>变成逆变的。这使得我们在类和相似的类型参数之间建立起了子类型关系，而结果正好与协变相反。也就是说，对于某个类<code>class Writer[-A]</code>，让<code>A</code>逆变意味着对于类型<code>A</code>和<code>B</code>，如果<code>A</code>是<code>B</code>的子类型，那么<code>Writer[B]</code>则是<code>Writer[A]</code>的子类型。</p><p>想想上面定义的类<code>Cat</code>、<code>Dog</code>和<code>Animal</code>，在下面例子中的应用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abstract class Printer[-A] &#123;</span><br><span class="line">  def print(value: A): Unit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>一个<code>Printer[A]</code>是一个简单的类，它知道该如何打印出类型<code>A</code>。下面我们为具体的类型来定义一些子类吧：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class AnimalPrinter extends Printer[Animal] &#123;</span><br><span class="line">  def print(animal: Animal): Unit =</span><br><span class="line">    println(&quot;The animal&apos;s name is: &quot; + animal.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CatPrinter extends Printer[Cat] &#123;</span><br><span class="line">  def print(cat: Cat): Unit =</span><br><span class="line">    println(&quot;The cat&apos;s name is: &quot; + cat.name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果一个<code>Printer[Cat]</code>知道如何打印<code>Cat</code>到控制台，而一个<code>Printer[Animal]</code>知道如何打印<code>Animal</code>到控制台，那么一个<code>Printer[Animal]</code>从道理上讲也应该知道如何打印<code>Cat</code>。反过来则不适用，因为一个<code>Printer[Cat]</code>不知道如何打印一个<code>Animal</code>到控制台。因此我们应该能够用<code>Printer[Animal]</code>来替换<code>Printer[Cat]</code>，要做到这点的话，需要让<code>Printer[A]</code>成为逆变的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">object ContravarianceTest extends App &#123;</span><br><span class="line">  val myCat: Cat = Cat(&quot;Boots&quot;)</span><br><span class="line"></span><br><span class="line">  def printMyCat(printer: Printer[Cat]): Unit = &#123;</span><br><span class="line">    printer.print(myCat)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  val catPrinter: Printer[Cat] = new CatPrinter</span><br><span class="line">  val animalPrinter: Printer[Animal] = new AnimalPrinter</span><br><span class="line"></span><br><span class="line">  printMyCat(catPrinter)</span><br><span class="line">  printMyCat(animalPrinter)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>该程序的输出如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The cat&apos;s name is: Boots</span><br><span class="line">The animal&apos;s name is: Boots</span><br></pre></td></tr></table></figure><h3 id="不变"><a href="#不变" class="headerlink" title="不变"></a>不变</h3><p>Scala中的泛型类默认是不变的。这意味着它们既不是协变的，也不是逆变的。下面的例子中，<code>Container</code>类是不变的，则<code>Container[Cat]</code>不是<code>Container[Animal]</code>，反过来也不是。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Container[A](value: A) &#123;</span><br><span class="line">  private var _value: A = value</span><br><span class="line">  def getValue: A = _value</span><br><span class="line">  def setValue(value: A): Unit = &#123;</span><br><span class="line">    _value = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看起来似乎一个<code>Container[Cat]</code>应该也是一个<code>Container[Animal]</code>，但是允许一个可变的泛型类协变其实是不安全的。这个例子中，<code>Container</code>是不变的，这点很重要。如果<code>Container</code>是协变的，类似于下面的事情可能就会发生：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val catContainer: Container[Cat] = new Container(Cat(&quot;Felix&quot;))</span><br><span class="line">val animalContainer: Container[Animal] = catContainer</span><br><span class="line">animalContainer.setValue(Dog(&quot;Spot&quot;))</span><br><span class="line">val cat: Cat = catContainer.getValue // Oops, we&apos;d end up with a Dog assigned to a Cat</span><br></pre></td></tr></table></figure><p>幸运的是，在我们犯错前编译器就会阻止我们。</p><h3 id="其他示例"><a href="#其他示例" class="headerlink" title="其他示例"></a>其他示例</h3><p>另外有一个可以帮助我们理解型变的例子，是源于Scala标准库里的<code>trait Function1[-T, +R]</code>。<code>Function1</code>是带有一个参数的函数，第一个类型参数<code>T</code>表示参数类型，第二个类型参数<code>R</code>表示返回类型。<code>Function1</code>在它的参数类型上是逆变的，在返回类型上是协变的。一般我们会使用字面量<code>A =&gt; B</code>来表示<code>Function1[A, B]</code>。</p><p>假如我们已经有了和之前类似的<code>Cat</code>、<code>Dog</code>、<code>Animal</code>继承树，外加下面这些：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract class SmallAnimal extends Animal</span><br><span class="line">case class Mouse(name: String) extends SmallAnimal</span><br></pre></td></tr></table></figure><p>假设现在我们有个函数接受动物类型，返回它们吃的食物类型。我们想要的可能是<code>Cat =&gt; SmallAnimal</code>（因为猫会吃小动物），但是如果替换为<code>Animal =&gt; Mouse</code>，我们的程序也可以正常运行。直观上说<code>Animal =&gt; Mouse</code>也可以接受一个<code>Cat</code>作为参数，因为<code>Cat</code>是一个<code>Animal</code>，并且返回一个<code>Mouse</code>，而它也是一个<code>SmallAnimal</code>。我们可以安全且隐形地用后者进行替换，因而我们可以说<code>Animal =&gt; Mouse</code>是<code>Cat =&gt; SmallAnimal</code>的子类型。</p><h3 id="和其他语言比较"><a href="#和其他语言比较" class="headerlink" title="和其他语言比较"></a>和其他语言比较</h3><p>和Scala类似的一些语言对于支持型变的方式是不一样的。例如，Scala中的型变注解其实和C#非常类似，它们都是在抽象类的定义时添加了注解（称为“声明式型变”）。而在Java中，型变注解是在一个抽象类使用时由使用者给定的（称为“使用式型变”）。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：docs.scala-lang.org/tour/variances.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——类型下界</title>
+    <link href="https://blog.luckypeng.com/2018/09/06/lower-type-bounds/"/>
+    <id>https://blog.luckypeng.com/2018/09/06/lower-type-bounds/</id>
+    <published>2018-09-06T14:59:19.000Z</published>
+    <updated>2019-07-20T13:58:37.145Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="upper-type-bounds.html">类型上界</a>限制了一个类型是另外一个类型的子类型，而<em>类型下界</em>则声明了一个类型是另外一个类型的父类型。<code>B &gt;: A</code>表明了类型参数<code>B</code>或者抽象类型<code>B</code>是类型<code>A</code>的超类。在大多数场景中，<code>A</code>是作为类的类型参数，而<code>B</code>会作为方法的类型参数。</p><p>这里有个十分有用的例子：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">trait Node[+B] &#123;</span><br><span class="line">  def prepend(elem: B): Node[B]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</span><br><span class="line">  def prepend(elem: B): ListNode[B] = ListNode(elem, this)</span><br><span class="line">  def head: B = h</span><br><span class="line">  def tail: Node[B] = t</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case class Nil[+B]() extends Node[B] &#123;</span><br><span class="line">  def prepend(elem: B): ListNode[B] = ListNode(elem, this)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个程序实现了一个单向链表。<code>Nil</code>表示一个空的元素（比如一个空的列表）。<code>class ListNode</code>是一个<code>Node</code>，它包含了一个类型<code>B</code>的元素（<code>head</code>）和一个列表中其余元素的引用（<code>tail</code>）。<code>class Node</code>和它的子类型是协变的，因为这里有<code>+B</code>。</p><p>然而，这个程序不能通过编译，因为<code>prepend</code>方法中的参数<code>elem</code>是<code>B</code>类型的，且声明了为协变的。这之所以行不通，是在于函数在它们的参数类型上是逆变的，而在它们的返回类型上是协变的。</p><p>为了解决这个问题，我们需要转变<code>prepend</code>方法中参数类型的型变。我们可以引用新的类型<code>U</code>，它的类型下界是<code>B</code>，从而实现这一转变。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">trait Node[+B] &#123;</span><br><span class="line">  def prepend[U &gt;: B](elem: U): Node[U]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</span><br><span class="line">  def prepend[U &gt;: B](elem: U): ListNode[U] = ListNode(elem, this)</span><br><span class="line">  def head: B = h</span><br><span class="line">  def tail: Node[B] = t</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case class Nil[+B]() extends Node[B] &#123;</span><br><span class="line">  def prepend[U &gt;: B](elem: U): ListNode[U] = ListNode(elem, this)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在我们便可以像下面这样操作了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">trait Bird</span><br><span class="line">case class AfricanSwallow() extends Bird</span><br><span class="line">case class EuropeanSwallow() extends Bird</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val africanSwallowList= ListNode[AfricanSwallow](AfricanSwallow(), Nil())</span><br><span class="line">val birdList: Node[Bird] = africanSwallowList</span><br><span class="line">birdList.prepend(new EuropeanSwallow)</span><br></pre></td></tr></table></figure><p><code>Node[Bird]</code>被分配到<code>africanSwallowList</code>，但是仍然可以接受<code>EuropeanSwallow</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/lower-type-bounds.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala之旅——类型上界</title>
+    <link href="https://blog.luckypeng.com/2018/09/05/upper-type-bounds/"/>
+    <id>https://blog.luckypeng.com/2018/09/05/upper-type-bounds/</id>
+    <published>2018-09-05T14:19:01.000Z</published>
+    <updated>2019-07-20T13:58:37.170Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Scala中，<a href="generic-classes.html">类型参数</a>和<a href="abstract-types.html">抽象类型</a>可能受到类型边界的约束。这些类型边界限制了具体的类型变量，同时揭示了关于该类型成员更多的信息。一个类型上界<code>T &lt;: A</code>表明了类型变量<code>T</code>是类型<code>A</code>的子类型。</p><p>这里有个例子演示了类<code>PetContainer</code>的类型参数的类型上界：<a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">abstract class Animal &#123;</span><br><span class="line"> def name: String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Pet extends Animal &#123;&#125;</span><br><span class="line"></span><br><span class="line">class Cat extends Pet &#123;</span><br><span class="line">  override def name: String = &quot;Cat&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Dog extends Pet &#123;</span><br><span class="line">  override def name: String = &quot;Dog&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Lion extends Animal &#123;</span><br><span class="line">  override def name: String = &quot;Lion&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PetContainer[P &lt;: Pet](p: P) &#123;</span><br><span class="line">  def pet: P = p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val dogContainer = new PetContainer[Dog](new Dog)</span><br><span class="line">val catContainer = new PetContainer[Cat](new Cat)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val lionContainer = new PetContainer[Lion](new Lion) // this would not compile</span><br></pre></td></tr></table></figure><p><code>class PetContainer</code>接受一个类型参数<code>P</code>，它是<code>Pet</code>的子类型。<code>Dog</code>和<code>Cat</code>是<code>Pet</code>的子类型，因此我们可以创建一个新的<code>PetContainer[Dog]</code>和<code>PetContainer[Cat]</code>。然而，如果我们试图创建一个<code>PetContainer[Lion]</code>，则会得到下面的错误：</p><p><code>type arguments [Lion] do not conform to class PetContainer&#39;s type parameter bounds [P &lt;: Pet]</code></p><p>这是因为<code>Lion</code>不是<code>Pet</code>的子类型。</p>]]></content>
+    
+    <summary type="html">
+    
+      原文：https://docs.scala-lang.org/tour/upper-type-bounds.html
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://blog.luckypeng.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="scala" scheme="https://blog.luckypeng.com/tags/scala/"/>
+    
+  </entry>
+  
+</feed>

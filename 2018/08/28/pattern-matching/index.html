@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="原文：https://docs.scala-lang.org/tour/pattern-matching.html">
+<meta name="keywords" content="scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala之旅——模式匹配">
+<meta property="og:url" content="https://blog.luckypeng.com/2018/08/28/pattern-matching/index.html">
+<meta property="og:site_name" content="小鹏闲话">
+<meta property="og:description" content="原文：https://docs.scala-lang.org/tour/pattern-matching.html">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T13:58:37.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala之旅——模式匹配">
+<meta name="twitter:description" content="原文：https://docs.scala-lang.org/tour/pattern-matching.html">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小鹏闲话" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.luckypeng.com/2018/08/28/pattern-matching/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>Scala之旅——模式匹配 | 小鹏闲话</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小鹏闲话</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">不自由，仍可活</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.luckypeng.com/2018/08/28/pattern-matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小鹏闲话">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Scala之旅——模式匹配
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-28 23:13:28" itemprop="dateCreated datePublished" datetime="2018-08-28T23:13:28+08:00">2018-08-28</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-20 21:58:37" itemprop="dateModified" datetime="2019-07-20T21:58:37+08:00">2019-07-20</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+            <div class="post-description">原文：https://docs.scala-lang.org/tour/pattern-matching.html</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>模式匹配是检查一个值是否匹配某种模式的机制。一个成功的匹配可以把一个值解析成它的组成部分。它相当于Java中<code>switch</code>的增强版，可以以此来替代一堆的if/else语句。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>一个match表达式有个待匹配的值、<code>match</code>关键字以及至少一个<code>case</code>从句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import scala.util.Random</span><br><span class="line"></span><br><span class="line">val x: Int = Random.nextInt(10)</span><br><span class="line"></span><br><span class="line">x match &#123;</span><br><span class="line">  case 0 =&gt; &quot;zero&quot;</span><br><span class="line">  case 1 =&gt; &quot;one&quot;</span><br><span class="line">  case 2 =&gt; &quot;two&quot;</span><br><span class="line">  case _ =&gt; &quot;many&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的<code>val x</code>是0到10之间的要给随机整数。<code>x</code>是<code>match</code>操作符的左操作数，右边是4个样例组成的表达式。最后一个样例<code>_</code>匹配了大于2的所有数字。这些样例也被称为_代值_。<a id="more"></a></p>
+<p>match表达式有一个返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def matchTest(x: Int): String = x match &#123;</span><br><span class="line">  case 1 =&gt; &quot;one&quot;</span><br><span class="line">  case 2 =&gt; &quot;two&quot;</span><br><span class="line">  case _ =&gt; &quot;many&quot;</span><br><span class="line">&#125;</span><br><span class="line">matchTest(3)  // many</span><br><span class="line">matchTest(1)  // one</span><br></pre></td></tr></table></figure>
+
+<p>这个match表达式返回一个String类型，那是因为所有的case都返回String。所以函数<code>matchTest</code>便返回一个String。</p>
+<h2 id="匹配样例类"><a href="#匹配样例类" class="headerlink" title="匹配样例类"></a>匹配样例类</h2><p>样例类在模式匹配中特别有用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">abstract class Notification</span><br><span class="line"></span><br><span class="line">case class Email(sender: String, title: String, body: String) extends Notification</span><br><span class="line"></span><br><span class="line">case class SMS(caller: String, message: String) extends Notification</span><br><span class="line"></span><br><span class="line">case class VoiceRecording(contactName: String, link: String) extends Notification</span><br></pre></td></tr></table></figure>
+
+<p><code>Notification</code>是一个抽象父类，另外有3个<code>Notification</code>类型的实现，分别是样例类<code>Email</code>、<code>SMS</code>和<code>VoiceRecording</code>。现在我们可以使用这些样例类进行模式匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def showNotification(notification: Notification): String = &#123;</span><br><span class="line">  notification match &#123;</span><br><span class="line">    case Email(email, title, _) =&gt;</span><br><span class="line">      s&quot;You got an email from $email with title: $title&quot;</span><br><span class="line">    case SMS(number, message) =&gt;</span><br><span class="line">      s&quot;You got an SMS from $number! Message: $message&quot;</span><br><span class="line">    case VoiceRecording(name, link) =&gt;</span><br><span class="line">      s&quot;you received a Voice Recording from $name! Click the link to hear it: $link&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">val someSms = SMS(&quot;12345&quot;, &quot;Are you there?&quot;)</span><br><span class="line">val someVoiceRecording = VoiceRecording(&quot;Tom&quot;, &quot;voicerecording.org/id/123&quot;)</span><br><span class="line"></span><br><span class="line">println(showNotification(someSms))  // prints You got an SMS from 12345! Message: Are you there?</span><br><span class="line"></span><br><span class="line">println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123</span><br></pre></td></tr></table></figure>
+
+<p>函数<code>showNotification</code>接受一个抽象类型<code>Notification</code>，并且用来匹配<code>Notification</code>类型（它会判断出到底是一个<code>Email</code>、<code>SMS</code>，还是一个<code>VoiceRecording</code>）。在<code>case Email(email, title, _)</code>中<code>email</code>和<code>title</code>用于返回值，而<code>body</code>则因<code>_</code>而被忽略。</p>
+<h2 id="模式守卫"><a href="#模式守卫" class="headerlink" title="模式守卫"></a>模式守卫</h2><p>模式守卫是简单的布尔表达式，使得case子句更具体，要做到这点只需要在模式后添加<code>if &lt;boolean expression&gt;</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = &#123;</span><br><span class="line">  notification match &#123;</span><br><span class="line">    case Email(email, _, _) if importantPeopleInfo.contains(email) =&gt;</span><br><span class="line">      &quot;You got an email from special someone!&quot;</span><br><span class="line">    case SMS(number, _) if importantPeopleInfo.contains(number) =&gt;</span><br><span class="line">      &quot;You got an SMS from special someone!&quot;</span><br><span class="line">    case other =&gt;</span><br><span class="line">      showNotification(other) // nothing special, delegate to our original showNotification function</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val importantPeopleInfo = Seq(&quot;867-5309&quot;, &quot;jenny@gmail.com&quot;)</span><br><span class="line"></span><br><span class="line">val someSms = SMS(&quot;867-5309&quot;, &quot;Are you there?&quot;)</span><br><span class="line">val someVoiceRecording = VoiceRecording(&quot;Tom&quot;, &quot;voicerecording.org/id/123&quot;)</span><br><span class="line">val importantEmail = Email(&quot;jenny@gmail.com&quot;, &quot;Drinks tonight?&quot;, &quot;I&apos;m free after 5!&quot;)</span><br><span class="line">val importantSms = SMS(&quot;867-5309&quot;, &quot;I&apos;m here! Where are you?&quot;)</span><br><span class="line"></span><br><span class="line">println(showImportantNotification(someSms, importantPeopleInfo))</span><br><span class="line">println(showImportantNotification(someVoiceRecording, importantPeopleInfo))</span><br><span class="line">println(showImportantNotification(importantEmail, importantPeopleInfo))</span><br><span class="line">println(showImportantNotification(importantSms, importantPeopleInfo))</span><br></pre></td></tr></table></figure>
+
+<p>在<code>case Email(email, _, _) if importantPeopleInfo.contains(email)</code>中，仅当<code>email</code>在重要人士的的列表中，该模式才会匹配上。</p>
+<h2 id="类型匹配"><a href="#类型匹配" class="headerlink" title="类型匹配"></a>类型匹配</h2><p>你可以像下面这样匹配类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abstract class Device</span><br><span class="line">case class Phone(model: String) extends Device&#123;</span><br><span class="line">  def screenOff = &quot;Turning screen off&quot;</span><br><span class="line">&#125;</span><br><span class="line">case class Computer(model: String) extends Device &#123;</span><br><span class="line">  def screenSaverOn = &quot;Turning screen saver on...&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def goIdle(device: Device) = device match &#123;</span><br><span class="line">  case p: Phone =&gt; p.screenOff</span><br><span class="line">  case c: Computer =&gt; c.screenSaverOn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>def goIdle</code>根据<code>Device</code>的类型不同会有不同的行为。当模式中需要调用方法时，这会很有用。一般惯例是使用类型的首字母来作为case标识符（如本例子中的<code>p</code>和<code>c</code>）。</p>
+<h2 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h2><p>特质和类都可以被标记为<code>sealed</code> ，这个时候也意味着它的所有子类必须在相同的文件中进行声明。这样做可以保证所有的子类型都是已知的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sealed abstract class Furniture</span><br><span class="line">case class Couch() extends Furniture</span><br><span class="line">case class Chair() extends Furniture</span><br><span class="line"></span><br><span class="line">def findPlaceToSit(piece: Furniture): String = piece match &#123;</span><br><span class="line">  case a: Couch =&gt; &quot;Lie on the couch&quot;</span><br><span class="line">  case b: Chair =&gt; &quot;Sit on the chair&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种做法对于模式匹配来说非常有用，因为我们不再需要一个额外的“case all”子句了。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>Scala的模式匹配语句对于由<a href="case-classes.html">样例类</a>表示的代数类型的匹配时很有用。另外Scala也允许通过使用<a href="extractor-objects.html">提取器对象</a>的<code>unapply</code>方法，来定义有别于样例类的的模式。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/scala/" rel="tag"># scala</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/case-classes/" rel="next" title="Scala之旅——样例类">
+                <i class="fa fa-chevron-left"></i> Scala之旅——样例类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/30/singleton-objects/" rel="prev" title="Scala之旅——单例对象">
+                Scala之旅——单例对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ1NS8yMTk2Nw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/388ca230a7c27c388f5300f8d1ddf2b3?s=80" alt="小鹏">
+  
+  <p class="site-author-name" itemprop="name">小鹏</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">238</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">111</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/coalchan" title="GitHub &rarr; https://github.com/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/coalchan" title="知乎 &rarr; https://www.zhihu.com/people/coalchan" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>知乎</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配样例类"><span class="nav-number">2.</span> <span class="nav-text">匹配样例类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式守卫"><span class="nav-number">3.</span> <span class="nav-text">模式守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型匹配"><span class="nav-number">4.</span> <span class="nav-text">类型匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密封类"><span class="nav-number">5.</span> <span class="nav-text">密封类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">6.</span> <span class="nav-text">注意</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小鹏</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1255649857&web_id=1255649857"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2018/08/28/pattern-matching/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
