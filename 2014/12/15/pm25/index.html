@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -560,6 +560,36 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/11/12/start-in-weixin/" rel="bookmark">利用heroku,nodejs进行微信公众平台的接入</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/11/13/weixin-basic-test/" rel="bookmark">微信公众平台开发基础接口测试</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/11/27/weixin-crawler/" rel="bookmark">微信公众平台爬取网页内容</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -615,9 +645,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/pm25/" rel="tag"># pm25</a>
+            <a href="/tags/pm25/" rel="tag"><i class="fa fa-tag"></i> pm25</a>
           
-            <a href="/tags/微信/" rel="tag"># 微信</a>
+            <a href="/tags/微信/" rel="tag"><i class="fa fa-tag"></i> 微信</a>
           
         </div>
       
@@ -1190,6 +1220,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

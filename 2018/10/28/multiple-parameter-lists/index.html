@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -569,6 +569,50 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/09/10/abstract-types/" rel="bookmark">Scala之旅——抽象类型</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/10/23/annotations/" rel="bookmark">Scala之旅——注解</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/07/22/basics/" rel="bookmark">Scala之旅——基础</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/10/28/by-name-parameters/" rel="bookmark">Scala之旅——传名（By-name)参数</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/08/13/case-classes/" rel="bookmark">Scala之旅——样例类</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -624,7 +668,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/scala/" rel="tag"># scala</a>
+            <a href="/tags/scala/" rel="tag"><i class="fa fa-tag"></i> scala</a>
           
         </div>
       
@@ -1197,6 +1241,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

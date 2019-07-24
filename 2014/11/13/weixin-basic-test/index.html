@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -563,6 +563,50 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/11/27/weixin-crawler/" rel="bookmark">微信公众平台爬取网页内容</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/12/04/blog-wordcount/" rel="bookmark">博客文章的单词统计</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/11/10/this_in_js/" rel="bookmark">javascript中的this</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/10/27/daynote_20141027/" rel="bookmark">大数据可视化工具——echarts</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/12/15/pm25/" rel="bookmark">利用pm25.in接口实现在公众号里获取输入城市的空气质量</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -618,9 +662,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
           
-            <a href="/tags/微信/" rel="tag"># 微信</a>
+            <a href="/tags/微信/" rel="tag"><i class="fa fa-tag"></i> 微信</a>
           
         </div>
       
@@ -1193,6 +1237,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

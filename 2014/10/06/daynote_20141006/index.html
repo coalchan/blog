@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -551,6 +551,29 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/23/daynote_20140923/" rel="bookmark">回家</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2016/02/13/here_or_there/" rel="bookmark">大地方，小地方</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -606,7 +629,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/家/" rel="tag"># 家</a>
+            <a href="/tags/家/" rel="tag"><i class="fa fa-tag"></i> 家</a>
           
         </div>
       
@@ -1153,6 +1176,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

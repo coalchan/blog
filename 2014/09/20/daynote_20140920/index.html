@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -560,6 +560,50 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/25/daynote_20140925/" rel="bookmark">用mahout运行bayes算法进行测试新闻分类的例子</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/28/daynote_20140928/" rel="bookmark">用mahout运行fpgrowth</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/06/daynote_20140906/" rel="bookmark">MRv1与MRv2</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/05/05/hive_introduce/" rel="bookmark">Hive简介</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/03/22/new_day/" rel="bookmark">此后一个月的文章发布计划</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -615,15 +659,15 @@
         
         <div class="post-tags">
           
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
           
-            <a href="/tags/sqoop/" rel="tag"># sqoop</a>
+            <a href="/tags/sqoop/" rel="tag"><i class="fa fa-tag"></i> sqoop</a>
           
-            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
+            <a href="/tags/hdfs/" rel="tag"><i class="fa fa-tag"></i> hdfs</a>
           
-            <a href="/tags/hive/" rel="tag"># hive</a>
+            <a href="/tags/hive/" rel="tag"><i class="fa fa-tag"></i> hive</a>
           
-            <a href="/tags/hbase/" rel="tag"># hbase</a>
+            <a href="/tags/hbase/" rel="tag"><i class="fa fa-tag"></i> hbase</a>
           
         </div>
       
@@ -1196,6 +1240,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

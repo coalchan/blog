@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -583,6 +583,10 @@
     </div>
 
     
+      
+
+
+    
 
     
       
@@ -638,11 +642,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/eclipse/" rel="tag"># eclipse</a>
+            <a href="/tags/eclipse/" rel="tag"><i class="fa fa-tag"></i> eclipse</a>
           
-            <a href="/tags/maven/" rel="tag"># maven</a>
+            <a href="/tags/maven/" rel="tag"><i class="fa fa-tag"></i> maven</a>
           
-            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+            <a href="/tags/tomcat/" rel="tag"><i class="fa fa-tag"></i> tomcat</a>
           
         </div>
       
@@ -1215,6 +1219,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

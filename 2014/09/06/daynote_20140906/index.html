@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -560,6 +560,43 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/04/daynote_20140904/" rel="bookmark">如何将MapReduce转换成Spark</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/20/daynote_20140920/" rel="bookmark">Sqoop使用：关系型数据库与hdfs、hive、hbase之间导入、导出数据</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/25/daynote_20140925/" rel="bookmark">用mahout运行bayes算法进行测试新闻分类的例子</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/28/daynote_20140928/" rel="bookmark">用mahout运行fpgrowth</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -615,11 +652,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/mapreduce/" rel="tag"># mapreduce</a>
+            <a href="/tags/mapreduce/" rel="tag"><i class="fa fa-tag"></i> mapreduce</a>
           
-            <a href="/tags/yarn/" rel="tag"># yarn</a>
+            <a href="/tags/yarn/" rel="tag"><i class="fa fa-tag"></i> yarn</a>
           
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
           
         </div>
       
@@ -1192,6 +1229,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

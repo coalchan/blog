@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -559,6 +559,50 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/20/daynote_20140920/" rel="bookmark">Sqoop使用：关系型数据库与hdfs、hive、hbase之间导入、导出数据</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/05/05/hive_introduce/" rel="bookmark">Hive简介</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/03/19/install_postgresql/" rel="bookmark">postgresql安装、非root用户配置、登录</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/03/30/sentry_install/" rel="bookmark">实时错误日志收集平台sentry安装</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/04/30/olap/" rel="bookmark">大数据之OLAP系列一——介绍篇</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -614,11 +658,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/hive/" rel="tag"># hive</a>
+            <a href="/tags/hive/" rel="tag"><i class="fa fa-tag"></i> hive</a>
           
-            <a href="/tags/sentry/" rel="tag"># sentry</a>
+            <a href="/tags/sentry/" rel="tag"><i class="fa fa-tag"></i> sentry</a>
           
-            <a href="/tags/OLAP/" rel="tag"># OLAP</a>
+            <a href="/tags/OLAP/" rel="tag"><i class="fa fa-tag"></i> OLAP</a>
           
         </div>
       
@@ -1191,6 +1235,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

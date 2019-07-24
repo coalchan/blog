@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -547,6 +547,10 @@
     </div>
 
     
+      
+
+
+    
 
     
       
@@ -602,9 +606,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/搜索/" rel="tag"># 搜索</a>
+            <a href="/tags/搜索/" rel="tag"><i class="fa fa-tag"></i> 搜索</a>
           
-            <a href="/tags/Swiftype/" rel="tag"># Swiftype</a>
+            <a href="/tags/Swiftype/" rel="tag"><i class="fa fa-tag"></i> Swiftype</a>
           
         </div>
       
@@ -1151,6 +1155,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

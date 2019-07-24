@@ -103,8 +103,8 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
@@ -602,6 +602,36 @@
     </div>
 
     
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/28/daynote_20140928/" rel="bookmark">用mahout运行fpgrowth</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/20/daynote_20140920/" rel="bookmark">Sqoop使用：关系型数据库与hdfs、hive、hbase之间导入、导出数据</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2014/09/06/daynote_20140906/" rel="bookmark">MRv1与MRv2</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
 
     
       
@@ -657,11 +687,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
           
-            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
+            <a href="/tags/hdfs/" rel="tag"><i class="fa fa-tag"></i> hdfs</a>
           
-            <a href="/tags/mahout/" rel="tag"># mahout</a>
+            <a href="/tags/mahout/" rel="tag"><i class="fa fa-tag"></i> mahout</a>
           
         </div>
       
@@ -1234,6 +1264,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
